@@ -8,7 +8,8 @@ const pratoModel = new schema({
     valor: {type: Number, required: true},
     tempo: {type: Number, required: true},
     descricao: {type: String, required: true},
-    dataCadastro: {type: Date, required: true, default: Date.now}
+    dataCadastro: {type: Date, required: true, default: Date.now},
+    foto: {type: String, required:true}
 }, {versionKey: false});
 
 pratoModel.pre('save', next =>{
