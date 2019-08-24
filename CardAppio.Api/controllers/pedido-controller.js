@@ -9,7 +9,7 @@ function pedidoController(){
 }
 
 pedidoController.prototype.post = async (req, res) =>{
-    let resultado = await _repositorio.post(req.body);
+    let resultado = await _repositorio.create(req.body);
     return resultado;
 };
 pedidoController.prototype.put = async (req, res) =>{
