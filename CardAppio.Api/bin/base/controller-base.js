@@ -1,8 +1,9 @@
 exports.post = async(repository, validationContract, req, res) => {
     try {
         let data = req.body;
+        console.log(validationContract);
         if(!validationContract.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContract.errors}).end();
+            res.status(400).send({message: 'Há dados errados em sua requisição: ', validation: validationContract._errors}).end();
             return;
         }
 

@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const clienteModel = new schema({
-    nomeCompleto: {required: true, index: true, type: String },
+    nomeCompleto: {required: true, type: String },
     email: {required: true, type: String},
     senha: {required: true, type: String},
     dataCadastro: {required: true, type: Date, default: Date.now},
-    foto: {type: String, required:true}
+    foto: {type: String}
 }, {versionKey: false});
 
 clienteModel.pre('save', next => {

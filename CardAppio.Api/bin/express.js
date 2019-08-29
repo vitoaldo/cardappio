@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 //Criando conexão com MongoDB
-mongoose.connect(variables.Database.connection);
+mongoose.connect(variables.Database.connection, { useNewUrlParser: true });
 
 //Config rotas
 app.use('/api/restaurante', restauranteRouter);

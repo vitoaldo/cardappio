@@ -32,7 +32,7 @@ class clienteRepository {
     }
 
     async checkEmailExiste(Email) {
-        this._base._model.findOne({email: Email});
+        return this._base._model.findOne({email: Email});
     }
 }
 

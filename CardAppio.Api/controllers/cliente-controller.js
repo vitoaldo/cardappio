@@ -16,7 +16,7 @@ clienteController.prototype.post = async (req, res) => {
     _validation.isEmail(data.email, 'Email invalido');
     _validation.isRequired(data.senha, 'Informe a senha');
 
-    let checkUsuario = await _repositorio.isEmail(data.email)
+    let checkUsuario = await _repositorio.checkEmailExiste(data.email);
     if (checkUsuario) {
         _validation.isTrue((checkUsuario.email != undefined), `Usuario já cadastrado com o email ${data.email}`);
     }

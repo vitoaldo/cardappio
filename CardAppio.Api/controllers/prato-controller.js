@@ -9,8 +9,13 @@ function pratoController(){
 }
 
 pratoController.prototype.post = async (req, res) =>{
-    let resultado = await _repositorio.create(req.body);
-    return resultado;
+    let data = req.body;
+    let _validation = new validation();
+
+    _validation.isRequired(data.prato, `O titulo do prato é obrigatório!`);
+    _validation.isRequired(data.valor, 'O valor do prato é obrigatório');
+
+    controllerBase.post(_repositorio, _validation, req, res);
 };
 pratoController.prototype.put = async (req, res) =>{
     let resultado = await _repositorio.update(req.body);
