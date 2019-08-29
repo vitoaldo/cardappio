@@ -1,8 +1,8 @@
-exports.post = async(repository, validationContratc, req, res) => {
+exports.post = async(repository, validationContract, req, res) => {
     try {
         let data = req.body;
-        if(!validationContratc.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContratc.errors}).end();
+        if(!validationContract.isValid()){
+            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContract.errors}).end();
             return;
         }
 
@@ -13,11 +13,11 @@ exports.post = async(repository, validationContratc, req, res) => {
        res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
     }
 }
-exports.put = async(repository, validationContratc, req, res) => {
+exports.put = async(repository, validationContract, req, res) => {
     try {
         let data = req.body;
-        if(!validationContratc.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContratc.errors}).end();
+        if(!validationContract.isValid()){
+            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContract.errors}).end();
             return;
         }
 

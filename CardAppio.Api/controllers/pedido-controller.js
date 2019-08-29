@@ -3,14 +3,22 @@
 const repositorio = require('../repositories/pedido-repository');
 const controllerBase = require('../bin/base/controller-base');
 const _repositorio = new repositorio();
+const validation = require('../bin/helpers/validation');
 
 function pedidoController(){
 
 }
 
 pedidoController.prototype.post = async (req, res) =>{
-    let resultado = await _repositorio.create(req.body);
-    return resultado;
+    let data = req.body;
+    let _validation = new validation();
+
+    _validation.isRequired(data.titulo, `O titulo do prato é obrigatório!`);
+    _validation.isRequired(data.valor, 'O valor do prato é obrigatório');
+    _validation.isRequired(data.tempo, 'O tempo médio é obrigatório');
+    _validation.isRequired(data.descricao, 'A descrição do prato é obrigatória');
+
+    controllerBase.post(_repositorio, _validation, req, res);
 };
 pedidoController.prototype.put = async (req, res) =>{
     let resultado = await _repositorio.update(req.body);
