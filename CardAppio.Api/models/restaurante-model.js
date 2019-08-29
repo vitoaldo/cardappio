@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const restauranteModel = new schema({
-    nome:{index: true, required: true, type: string},
-    local:{required: true, type: string},
-    foto:{type:string, required: true},
+    nome:{index: true, required: true, type: String},
+    local:{required: true, type: String},
+    foto:{type:String, required: true},
     dataCadastro:{type:Date, default: Date.now},
     quantidadeMesas:{type: Number, required:true},
     email:{type: String, required:true},

@@ -6,6 +6,10 @@ class restauranteRepository{
         this._base = new base('Restaurante');
     }
 
+    async authenticate(Email, Senha){
+        this._base._model.findOne({email: Email, senha: Senha});
+    }
+
     async create(data){
         return await this._base.create(data);
     }

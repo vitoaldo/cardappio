@@ -1,29 +1,38 @@
 require('../models/cliente-model');
 const base = require('../bin/base/repository-base');
 
-class clienteRepository{
-    constructor(){
+class clienteRepository {
+    constructor() {
         this._base = new base('Cliente');
     }
 
-    async create(data){
+    async authenticate(Email, Senha) {
+        return await this._base._model.findOne({ email: Email, senha: Senha });
+
+    }
+
+    async create(data) {
         return await this._base.create(data);
     }
 
-    async update(id, data){
-        return await this._base.update(id,data);
+    async update(id, data) {
+        return await this._base.update(id, data);
     }
 
-    async get(){
+    async get() {
         return await this._base.get();
     }
 
-    async getById(id){
+    async getById(id) {
         return await this._base.getById(id);
     }
 
-    async delete(id){
+    async delete(id) {
         return await this._base.delete(id);
+    }
+
+    async checkEmailExiste(Email) {
+        this._base._model.findOne({email: Email});
     }
 }
 

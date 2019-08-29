@@ -2,7 +2,7 @@ exports.post = async(repository, validationContratc, req, res) => {
     try {
         let data = req.body;
         if(!validationContratc.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContratc.error}).end();
+            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContratc.errors}).end();
             return;
         }
 
@@ -15,10 +15,17 @@ exports.post = async(repository, validationContratc, req, res) => {
 }
 exports.put = async(repository, validationContratc, req, res) => {
     try {
-        let data = await repository.update();
-        res.status(200).send(data);
+        let data = req.body;
+        if(!validationContratc.isValid()){
+            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContratc.errors}).end();
+            return;
+        }
+
+        let resultado = await repository.update(data);
+        res.satus(201).send(resultado);
     } catch (error) {
-        
+        console.log('Metodo PUT com erro!', error);
+       res.status(500).send({message: 'Erro no processamento do metodo PUT'})
     }
 }
 exports.get = async(repository, req, res) => {
