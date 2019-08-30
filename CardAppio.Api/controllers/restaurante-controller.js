@@ -9,12 +9,32 @@ function restauranteController(){
 }
 
 restauranteController.prototype.post = async (req, res) =>{
-    let resultado = await _repositorio.create(req.body);
-    return resultado;
+    let data = req.body;
+    let _validation = new validation();
+
+    _validation.isRequired(data.nome, `O titulo do prato é obrigatório!`);
+    _validation.isRequired(data.local, 'Local do restaurante é obrigatório');
+    _validation.isRequired(data.quantidadeMesas, 'Deve ser definida a quantidade de mesas dedicadas');
+    _validation.isRequired(data.email, 'O email é obrigatório');
+    _validation.isRequired(data.senha, 'senha é obrigatória');
+    
+    let checkRestaurante = await _repositorio.checkRestaurante(data.email);
+    if (checkRestaurante) {
+        _validation.isTrue((checkRestaurante.id != undefined), `Restaurante já cadastrado com o email ${data.email}`);
+    }
+    
+    controllerBase.post(_repositorio, _validation, req, res);
 };
 restauranteController.prototype.put = async (req, res) =>{
-    let resultado = await _repositorio.update(req.body);
-    return resultado;
+    let data = req.body;
+    let __validation = new validation();
+    let checkRestaurante = await _repositorio.checkRestaurante(req.params.id);
+
+    if (checkRestaurante) {
+        _validation.isTrue((chekcPrato.chekcPrato == undefined), `Restaurante não está cadastrado com o email ${data.email}`);
+    }
+
+    controllerBase.put(_repositorio, _validation, req, res);
 };
 restauranteController.prototype.get = async (req, res) => {
     controllerBase.get(_repositorio, req, res);

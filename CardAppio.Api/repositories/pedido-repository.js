@@ -26,7 +26,7 @@ class pedidoRepository{
         return await this._base.delete(id);
     }
 
-    async checkPrato(Id){
+    async checkPedido(Id){
         return this._base._model.findOne({id: Id});
     }
 }

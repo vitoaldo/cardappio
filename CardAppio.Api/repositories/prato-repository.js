@@ -25,6 +25,10 @@ class pratoRepository{
     async delete(id){
         return await this._base.delete(id);
     }
+
+    async checkPrato(Id){
+        return this._base._model.findOne({id: Id});
+    }
 }
 
 module.exports = pratoRepository;

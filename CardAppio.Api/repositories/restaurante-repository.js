@@ -29,6 +29,10 @@ class restauranteRepository{
     async delete(id){
         return await this._base.delete(id);
     }
+
+    async checkRestaurante(Id){
+        return this._base._model.findOne({id: Id});
+    }
 }
 
 module.exports = restauranteRepository;

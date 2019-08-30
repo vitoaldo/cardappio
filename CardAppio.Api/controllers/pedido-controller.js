@@ -16,16 +16,23 @@ pedidoController.prototype.post = async (req, res) => {
     _validation.isRequired(data.prato, `O titulo do prato é obrigatório!`);
     _validation.isRequired(data.valor, 'O valor do prato é obrigatório');
 
+    let checkPedido = await _repositorio.checkPedido(data.email);
+    if (checkPedido) {
+        _validation.isTrue((checkPedido.id != undefined), `Pedido já cadastrado`);
+    }
+
     controllerBase.post(_repositorio, _validation, req, res);
 };
 pedidoController.prototype.put = async (req, res) => {
     let data = req.body;
     let __validation = new validation();
-    let checkPrato = await _repositorio.checkPrato(req.params.id);
+    let checkPedido = await _repositorio.checkPedido(req.params.id);
 
-    if (checkPrato) {
-        
+    if (checkPedido) {
+        _validation.isTrue((checkPedido.id == undefined), `Pedido não está cadastrado`);
     }
+
+    controllerBase.put(_repositorio, _validation, req, res);
 };
 pedidoController.prototype.get = async (req, res) => {
     controllerBase.get(_repositorio, req, res);
