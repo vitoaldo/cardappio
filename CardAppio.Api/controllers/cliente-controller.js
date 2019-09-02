@@ -26,9 +26,11 @@ clienteController.prototype.autenticar = async (req, res) =>{
 clienteController.prototype.post = async (req, res) => {
     let data = req.body;
     let _validation = new validation();
-    _validation.isRequired(data.email, 'Informe o email')
+    
     _validation.isEmail(data.email, 'Email invalido');
+    _validation.isRequired(data.email, 'Informe o email')
     _validation.isRequired(data.senha, 'Informe a senha');
+    _validation.isRequired(data.nomeCompleto, 'Informe o nomeCompleto');
 
     let checkUsuario = await _repositorio.checkEmailExiste(data.email);
     if (checkUsuario) {

@@ -7,7 +7,7 @@ exports.post = async(repository, validationContract, req, res) => {
         }
 
         let resultado = await repository.create(data);
-        res.satus(201).send(resultado);
+        res.status(201).send(resultado);
     } catch (error) {
        console.log('Metodo POST com erro!', error);
        res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
