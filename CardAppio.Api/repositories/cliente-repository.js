@@ -8,7 +8,6 @@ class clienteRepository {
 
     async authenticate(Email, Senha) {
         return await this._base._model.findOne({ email: Email, senha: Senha });
-
     }
 
     async create(data) {

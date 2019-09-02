@@ -1,9 +1,8 @@
 exports.post = async(repository, validationContract, req, res) => {
     try {
         let data = req.body;
-        console.log(validationContract);
         if(!validationContract.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição: ', validation: validationContract._errors}).end();
+            res.status(400).send({message: 'Há dados errados em sua requisição: ', validation: validationContract.errors()}).end();
             return;
         }
 
@@ -18,7 +17,7 @@ exports.put = async(repository, validationContract, req, res) => {
     try {
         let data = req.body;
         if(!validationContract.isValid()){
-            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContract.errors}).end();
+            res.status(400).send({message: 'Há dados errados em sua requisição', validation: validationContract.errors()}).end();
             return;
         }
 
@@ -26,7 +25,7 @@ exports.put = async(repository, validationContract, req, res) => {
         res.satus(201).send(resultado);
     } catch (error) {
         console.log('Metodo PUT com erro!', error);
-       res.status(500).send({message: 'Erro no processamento do metodo PUT'})
+       res.status(500).send({message: 'Erro no processamento do metodo PUT', validation: validationContract.errors()})
     }
 }
 exports.get = async(repository, req, res) => {
@@ -35,7 +34,7 @@ exports.get = async(repository, req, res) => {
         res.status(200).send(data);
     } catch (error) {
         console.log('Metodo GET com erro!', error);
-        res.status(500).send({message: 'Erro no processamento do metodo GET'}) 
+        res.status(500).send({message: 'Erro no processamento do metodo GET', validation: validationContract.errors()}) 
     }
 }
 exports.getById = async(repository, req, res) => {
@@ -45,7 +44,8 @@ exports.getById = async(repository, req, res) => {
             res.status(200).send(data);
         }
     } catch (error) {
-        
+        console.log('Metodo GetById com erro');
+        res.status(500).send({message: 'Erro no processamento do metodo GetById', validation: validationContract.errors()});
     }
 }
 exports.delete = async(repository, req, res) => {
@@ -54,6 +54,6 @@ exports.delete = async(repository, req, res) => {
         res.status(200).send(data);
     } catch (error) {
         console.log('Metodo DELETE com erro!', error);
-        res.status(500).send({message: 'Erro no processamento do metodo DELETE'});
+        res.status(500).send({message: 'Erro no processamento do metodo DELETE', validation: validationContract.errors()});
     }
 }
