@@ -8,7 +8,6 @@ exports.post = async(repository, validationContract, req, res) => {
         }
 
         let resultado = await repository.create(data);
-        console.log('resultado');
         res.status(201).send(resultado);
     } catch (error) {
        console.log('Metodo POST com erro!', error);
