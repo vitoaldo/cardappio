@@ -6,11 +6,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TabsPage } from './tabs.page';
+import { BuscaPage } from '../busca/busca.page';
+import { BuscaPageModule } from '../busca/busca.module';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TabsPage
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
+        path: 'busca',
+        loadChildren: '../busca/busca.module#BuscaPageModule'
+      }
+    ]
   }
 ];
 
@@ -19,8 +27,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    BuscaPageModule,
     RouterModule.forChild(routes)
   ],
   declarations: [TabsPage]
 })
-export class TabsPageModule {}
+export class TabsPageModule { }

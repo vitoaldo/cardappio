@@ -8,14 +8,13 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  constructor(public navCtrl:NavController) { }
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
-  abrirPerfil() {
-
+  selecionaBusca(event: any): void {
+    this.navCtrl.navigateForward('busca');
   }
 
 }
-  
