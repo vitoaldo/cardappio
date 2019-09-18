@@ -10,12 +10,19 @@ function clienteController() {
 }
 
 clienteController.prototype.autenticar = async (req, res) =>{
+    let data = req.body;
     let _validation = new validation();
-    _validation.isEmail(req.email, 'O email não é valido');
-    _validation.isRequired(req.email, 'É necessário informar um email');
-    _validation.isRequired(req.senha, 'É necessário informar uma senha');
 
-    let resultado = _repositorio.authenticate(req.email, req.senha);
+    _validation.isEmail(data.email, 'O email não é valido');
+    _validation.isRequired(data.email, 'É necessário informar um email');
+    _validation.isRequired(data.senha, 'É necessário informar uma senha');
+
+    console.log(data);
+    console.log(data.senha);
+
+    let resultado = await _repositorio.authenticate(data.email, data.senha);
+
+    console.log(resultado);
 
     if(resultado){
         return res.status(200).send(resultado);

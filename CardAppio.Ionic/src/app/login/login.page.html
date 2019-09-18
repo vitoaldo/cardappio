@@ -1,14 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Login</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-img></ion-img>
-  <ion-textarea>email</ion-textarea>
-  <ion-textarea>senha</ion-textarea>
-  <ion-button (click)="logar()">Login</ion-button>
-  <ion-button>Esqueci a senha</ion-button>
-
+	<ion-img></ion-img>
+	<ion-item>
+		<ion-label>E-mail</ion-label>
+		<ion-input [(ngModel)]="email" type="email"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label>Password</ion-label>
+		<ion-input [(ngModel)]="password" type="password"></ion-input>
+	</ion-item>
+	<ion-button (click)="logar()">Login</ion-button>
+	<ion-button>Esqueci a senha</ion-button>
 </ion-content>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HttpClient } from 'selenium-webdriver/http';
 import { SpinnerService } from './spinner.service';
 import { AlertService } from './alert.service';
 import { NetworkService } from './network.service';
-import { Promise } from 'q';
 import { httpResultModel } from '../models/httpResultModel';
 
 @Injectable({
@@ -16,17 +16,30 @@ export class HttpService {
     private alertService: AlertService,
     private networkService: NetworkService) { }
 
-    // public get(url: string): Promise<httpResultModel>{
-    //   this.spinnerService.Show('Carregando dados, aguarde...');
+  	verifyCanLogin(email: string, pass:string) {
+	  	let promise = new Promise((resolve, reject) => {
 
-    //   return new Promise((resolve) => {
-    //     return this.http.send(resolve).then(x =>{
+	  		let body = {
+				email: email,
+				senha: pass
+				};
 
-    //     }).catch((error) => {
+		  	let headers = new HttpHeaders();
 
-    //     }
-    //     )
-    //   });
-    // }
+	    	headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+		    this.http.post('http://localhost:3000/api/cliente/auth/', JSON.stringify(body), {headers: headers})
+		        .toPromise()
+		        .then(
+		          res => { 
+		            resolve(res);
+		          },
+		          msg => { 
+		            reject(msg);
+		          }
+		        );
+	    });
+	    return promise;
+  	}
 
 }

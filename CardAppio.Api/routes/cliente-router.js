@@ -12,10 +12,11 @@ router.get('/:id', ctrl.getById);
 
 router.post('/', ctrl.post);
 
+router.post('/auth', ctrl.autenticar);
+
 router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);
 
-// router.autenticar('/autenticar', ctrl.autenticar);
 
 module.exports = router;
