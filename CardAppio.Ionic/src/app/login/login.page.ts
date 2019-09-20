@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
   }
 
   logar(): void {
-    this.navCtrl.navigateForward('tabs');
+    this.navCtrl.navigateRoot('tabs');
   }
 
 }

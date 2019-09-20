@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { connect } from 'tls';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
+declare var connect;
+declare var navigator;
 export class NetworkService {
 
   constructor(private platform: Platform) { }

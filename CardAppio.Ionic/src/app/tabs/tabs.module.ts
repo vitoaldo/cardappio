@@ -14,11 +14,16 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
-      {
-        path: 'busca',
-        loadChildren: '../busca/busca.module#BuscaPageModule'
-      }
+      { path: 'favoritos', loadChildren: '../favoritos/favoritos.module#FavoritosPageModule' },
+      { path: 'busca', loadChildren: '../busca/busca.module#BuscaPageModule' },
+      { path: 'reserva', loadChildren: '../reserva/reserva.module#ReservaPageModule' },
+      { path: 'perfil', loadChildren: '../perfil/perfil.module#PerfilPageModule' },
+      { path: 'restaurantes', loadChildren: '../restaurantes/restaurantes.module#RestaurantesPageModule' },
     ]
+  },
+  {
+    path: '',
+    redirectTo: 'tabs'
   }
 ];
 
