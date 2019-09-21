@@ -8,5 +8,18 @@
 </ion-header>
 
 <ion-content>
-
+	<ion-card *ngFor="let restaurante of restaurantes">
+	  <ion-card-header>
+	    <ion-card-subtitle>Número de mesas: {{restaurante.quantidadeMesas}}</ion-card-subtitle>
+	    <ion-card-title>{{restaurante.nome}}</ion-card-title>
+	  </ion-card-header>
+	  <ion-card-content>
+	    <ion-icon name="pin" slot="start"></ion-icon>
+	    {{restaurante.local}}
+	  </ion-card-content>
+	  <ion-item>
+	  	<ion-icon name="heart-empty" slot="start"></ion-icon>
+	  	<ion-button fill="outline" slot="end" (click)="view(restaurante._id)">View</ion-button>
+  	  </ion-item>
+	</ion-card>
 </ion-content>

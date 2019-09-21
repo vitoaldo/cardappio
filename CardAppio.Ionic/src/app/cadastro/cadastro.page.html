@@ -1,18 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>cadastro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-textarea>Nome</ion-textarea>
-  <ion-textarea>Email</ion-textarea>
-  <ion-textarea>Senha</ion-textarea>
-    <ion-img>
-    </ion-img>
-    <ion-button>Buscar foto de perfil
-    </ion-button>
-
-    <ion-button>Cadastrar</ion-button>
-
+  <ion-item>
+    <ion-label>Nome Completo</ion-label>
+    <ion-input [(ngModel)]="nome" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>E-mail</ion-label>
+    <ion-input [(ngModel)]="email" type="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input [(ngModel)]="senha" type="password"></ion-input>
+  </ion-item>
+  <!--
+    <ion-img></ion-img>
+    <ion-button>Buscar foto de perfil</ion-button>
+  -->
+  <ion-button (click)="signin()">Cadastrar</ion-button>
 </ion-content>

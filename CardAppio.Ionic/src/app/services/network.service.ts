@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
+declare var connect;
+declare var navigator;
 
 @Injectable({
   providedIn: 'root'
 })
 
-declare var connect;
-declare var navigator;
 export class NetworkService {
 
   constructor(private platform: Platform) { }
@@ -15,7 +15,8 @@ export class NetworkService {
   get isOnline(): boolean {
     if (this.platform.is('cordova')) {
       if(navigator.connection && navigator.connection.type){
-        return (navigator.connection.type != Connection.NONE && navigator.connection.type != Connection.UNKNOWN);
+        // return (navigator.connection.type != Connection.NONE && navigator.connection.type != Connection.UNKNOWN);
+        return false;
       } else {
         return true;
       }

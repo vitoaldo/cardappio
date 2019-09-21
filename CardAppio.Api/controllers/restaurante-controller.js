@@ -1,6 +1,7 @@
 'use-strict'
 
 const repositorio = require('../repositories/restaurante-repository');
+const validation = require('../bin/helpers/validation');
 const controllerBase = require('../bin/base/controller-base');
 const _repositorio = new repositorio()
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Session } from '../session/session';
+import { Cliente } from '../models/clienteModel';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilPage implements OnInit {
 
-  constructor() { }
+   constructor(
+  	public navCtrl: NavController,
+  	public session: Session
+  ){}
+
+
+  nome:string;
+  email:string;
+
+  cliente: Cliente;
 
   ngOnInit() {
+  	this.session.exist().then(res => {
+  		if(!res){
+  			this.navCtrl.navigateForward('/');
+  		}
+	  });
+
+  	this.session.get().then(res => {
+        this.cliente = new Cliente(res);
+	  	this.nome = this.cliente.nomeCompleto; 
+	  	this.email = this.cliente.email; 
+    });
   }
 
+  logout(): void {
+  	this.session.remove();
+	  this.navCtrl.navigateForward('/');
+  }
 }
