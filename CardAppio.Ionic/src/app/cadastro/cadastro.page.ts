@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { HttpService } from '../services/http.service';
+import { Session } from '../session/session';
+import { Cliente } from '../models/clienteModel';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,9 +12,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroPage implements OnInit {
 
-  constructor() { }
+  constructor(
+  	public navCtrl: NavController,
+  	public httpService: HttpService,
+  	public alertService: AlertService,
+  	public session: Session
+  ){}
+
+
+  nome:string;
+  email:string;
+  senha:string;
+
+  cliente:Cliente;
 
   ngOnInit() {
+  	this.session.exist().then(res => {
+		if(res){
+			this.navCtrl.navigateForward('/tabs/perfil');
+		}
+	});
+  }
+  
+  signin(): void {
+	this.httpService.createAccount(this.nome, this.email, this.senha).then(cliente => {
+    	if(cliente){
+    		this.cliente = new Cliente(cliente);
+    		this.session.create(this.cliente);
+    		this.navCtrl.navigateForward('tabs');
+	  	}
+	  	else{
+        	this.alertService.showAlert("Error:", "Couldn`t create account.");
+	  	}
+    });
   }
 
 }

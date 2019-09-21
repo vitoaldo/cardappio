@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'tabs-restaurante', loadChildren: './tabs-restaurante/tabs-restaurante.module#TabsRestaurantePageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
+  { path: 'restaurante', loadChildren: './restaurante/restaurante.module#RestaurantePageModule' },
 
 ];
 
