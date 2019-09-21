@@ -81,7 +81,6 @@ export class HttpService {
 					    fullErrorMessage += valid.message + ".\n";
 					}
 
-					console.log(fullErrorMessage);
 		        	this.alertService.showAlert(data.error.message, fullErrorMessage);
 		        });
 	    });
