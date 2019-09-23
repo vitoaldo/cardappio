@@ -9,6 +9,7 @@ const restauranteRouter = require('../routes/restaurante-router');
 const clienteRouter = require('../routes/cliente-router');
 const pratoRouter = require('../routes/prato-router');
 const pedidoRouter = require('../routes/pedido-router');
+const favoritoRouter = require('../routes/favorito-router');
 
 const app = express();
 app.use(cors());
@@ -25,5 +26,6 @@ app.use('/api/restaurante', restauranteRouter);
 app.use('/api/cliente', clienteRouter);
 app.use('/api/pedido', pedidoRouter);
 app.use('/api/prato', pratoRouter);
+app.use('api/favorito', favoritoRouter);
 
 module.exports = app;

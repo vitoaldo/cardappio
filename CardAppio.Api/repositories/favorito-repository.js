@@ -1,9 +1,10 @@
 require('../models/prato-model');
 const base = require('../bin/base/repository-base');
 
-class pratoRepository{
+class favoritoRepository
+{
     constructor(){
-        this._base = new base('Prato');
+        this._base = new base('Favorito');
     }
 
     async create(data){
@@ -26,9 +27,10 @@ class pratoRepository{
         return await this._base.delete(id);
     }
 
-    async checkPrato(Id){
+    async checkFavorito(Id){
         return this._base._model.findOne({id: Id});
     }
 }
 
-module.exports = pratoRepository;
+module.exports = favoritoRepository
+;

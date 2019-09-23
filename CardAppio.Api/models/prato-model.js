@@ -9,6 +9,7 @@ const pratoModel = new schema({
     tempo: {type: Number, required: true},
     descricao: {type: String, required: true},
     dataCadastro: {type: Date, required: true, default: Date.now},
+    restauranteId: {type: String, required: true},
     foto: {type: String}
 }, {versionKey: false});
 

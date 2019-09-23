@@ -27,6 +27,8 @@ export class RestaurantePage implements OnInit {
   local:any;
   quantidadeMesas:any;
 
+
+
   plates:any;
 
   ngOnInit() {
