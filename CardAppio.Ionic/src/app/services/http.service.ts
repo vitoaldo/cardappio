@@ -37,6 +37,17 @@ export class HttpService {
 	    return promise;
   	}
 
+  	getPlates() {
+	  	let promise = new Promise((resolve, reject) => {
+		    this.http.get('http://localhost:3000/api/prato/')
+		        .toPromise()
+		        .then((response) => {
+		        	resolve(response);
+		        });
+	    });
+	    return promise;
+  	}
+
   	getRestaurantes() {
 	  	let promise = new Promise((resolve, reject) => {
 		    this.http.get('http://localhost:3000/api/restaurante/')
