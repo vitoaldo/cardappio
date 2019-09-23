@@ -16,6 +16,6 @@ router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);
 
-// router.autenticar('/autenticar', ctrl.autenticar);
+router.post('/auth', ctrl.autenticar);
 
 module.exports = router;

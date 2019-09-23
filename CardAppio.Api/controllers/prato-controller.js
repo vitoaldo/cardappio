@@ -2,6 +2,7 @@
 
 const repositorio = require('../repositories/prato-repository');
 const controllerBase = require('../bin/base/controller-base');
+const validation = require('../bin/helpers/validation');
 const _repositorio = new repositorio()
 
 function pratoController(){
@@ -17,7 +18,7 @@ pratoController.prototype.post = async (req, res) =>{
     _validation.isRequired(data.tempo, 'O tempo médio é obrigatório');
     _validation.isRequired(data.descricao, 'A descrição do prato é obrigatória');
 
-    let checkPrato = await _repositorio.checkPrato(data.email);
+    let checkPrato = await _repositorio.checkPrato(data.id);
     if (checkPrato) {
         _validation.isTrue((checkPrato.id != undefined), `Prato já cadastrado`);
     }

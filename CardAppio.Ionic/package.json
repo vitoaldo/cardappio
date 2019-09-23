@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/date-picker": "^4.20.0",
     "@ionic-native/email-composer": "^5.14.0",
     "@ionic-native/network": "^5.13.0",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -28,6 +29,7 @@
     "@ionic/angular": "^4.9.1",
     "@ionic/storage": "^2.2.0",
     "cordova-android": "^8.1.0",
+    "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-email-composer": "^0.9.2",
     "cordova-plugin-network-information": "^2.0.2",
     "core-js": "^2.5.4",
@@ -79,7 +81,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-email-composer": {}
+      "cordova-plugin-email-composer": {},
+      "cordova-plugin-datepicker": {}
     },
     "platforms": [
       "android"
