@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
   logar(): void {
   	this.httpService.verifyCanLogin(this.email, this.password).then(cliente => {
     	if(cliente){
+        console.log('RETORNO DO VERIFY CAN LOGIN =>', cliente);
     		this.cliente = new Cliente(cliente);
     		this.session.create(this.cliente);
     		this.navCtrl.navigateForward('tabs');

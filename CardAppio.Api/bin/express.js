@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const variables = require('../bin/configuration/variables');
+const cors = require('cors');
 
 //Rotas
 const restauranteRouter = require('../routes/restaurante-router');
@@ -10,6 +11,7 @@ const pratoRouter = require('../routes/prato-router');
 const pedidoRouter = require('../routes/pedido-router');
 
 const app = express();
+app.use(cors());
 
 //Config de parse do Json
 app.use(bodyParser.json());

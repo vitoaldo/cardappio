@@ -12,31 +12,31 @@ import { Session } from '../session/session';
 export class RestaurantesPage implements OnInit {
 
   constructor(
-  	public httpService: HttpService,
-  	public navCtrl: NavController,
-  	public session: Session
+    public httpService: HttpService,
+    public navCtrl: NavController,
+    public session: Session
   ) { }
 
-  restaurantes:any;
+  restaurantes: any;
 
   ngOnInit() {
-  	this.session.exist().then(res => {
-  		if(!res){
-    		this.navCtrl.navigateForward('/');
-    	}
-	  	this.httpService.getRestaurantes().then(restaurantes => {
-	    	this.restaurantes = restaurantes;
-	    });
-  	});
+    this.session.exist().then(res => {
+      if (!res) {
+        this.navCtrl.navigateForward('/');
+      }
+      this.httpService.getRestaurantes().then(restaurantes => {
+        this.restaurantes = restaurantes;
+      });
+    });
   }
 
   view(id: string): void {
     let navigationExtra: NavigationExtras = {
-        queryParams: {
-            id: id
-        }
+      queryParams: {
+        id: id,
+      }
     };
-  	this.navCtrl.navigateForward('restaurante', navigationExtra);
+    this.navCtrl.navigateForward('restaurante', navigationExtra);
   }
 
 }
