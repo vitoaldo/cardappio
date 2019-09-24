@@ -8,8 +8,5 @@ const favoritoModel = new schema({
     restauranteId: { required: true, type: String },
 }, { versionKey: false });
 
-clienteModel.pre(next => {
-    next();
-});
 
 module.exports = mongoose.model('Favorito', favoritoModel);
