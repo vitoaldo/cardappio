@@ -1,4 +1,4 @@
-require('../models/prato-model');
+require('../models/favorito-model');
 const base = require('../bin/base/repository-base');
 
 class favoritoRepository
