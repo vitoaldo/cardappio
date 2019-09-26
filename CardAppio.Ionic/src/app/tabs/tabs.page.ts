@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Session } from '../session/session';
+
 
 @Component({
   selector: 'app-tabs',
@@ -8,13 +10,15 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, private session: Session) { }
 
   ngOnInit() {
+    this.session.exist().then(res => {
+      if (!res) {
+        this.navCtrl.navigateForward('/');
+      }
+    });
   }
 
-  selecionaBusca(event: any): void {
-    this.navCtrl.navigateForward('busca');
-  }
 
 }

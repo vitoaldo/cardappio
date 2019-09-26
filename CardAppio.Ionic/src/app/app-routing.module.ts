@@ -7,11 +7,11 @@ const routes: Routes = [
   { path: 'tabs-restaurante', loadChildren: './tabs-restaurante/tabs-restaurante.module#TabsRestaurantePageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'restaurante', loadChildren: './restaurante/restaurante.module#RestaurantePageModule' },
-
+  { path: 'esqueci-senha', loadChildren: './esqueci-senha/esqueci-senha.module#EsqueciSenhaPageModule' }
 ];
 
 @NgModule({
-  imports: [
+  imports: [  
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]

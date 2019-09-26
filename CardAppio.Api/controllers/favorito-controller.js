@@ -12,8 +12,7 @@ function favoritoController(){
 favoritoController.prototype.post = async (req, res) =>{
     let data = req.body;
     let _validation = new validation();
-
-
+    console.log(data);
     let checkFavorito = await _repositorio.checkFavorito(data.id);
     if (checkFavorito) {
         _validation.isTrue((checkFavorito.id != undefined), `Favorito já cadastrado`);

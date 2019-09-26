@@ -4,6 +4,7 @@ import { SpinnerService } from './spinner.service';
 import { AlertService } from './alert.service';
 import { NetworkService } from './network.service';
 import { httpResultModel } from '../models/httpResultModel';
+import { UrlAPIService } from './url-api.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,7 +14,10 @@ export class HttpService {
 	constructor(private http: HttpClient,
 		private spinnerService: SpinnerService,
 		private alertService: AlertService,
-		private networkService: NetworkService) { }
+		private networkService: NetworkService,
+		private urlAPI: UrlAPIService) { }
+
+	api = this.urlAPI.getURL();
 
 	verifyCanLogin(email: string, pass: string) {
 
@@ -26,7 +30,7 @@ export class HttpService {
 			console.log('BODY CONSTRUIDO =>', body);
 			const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-			this.http.post('http://localhost:3000/api/cliente/auth', body, { headers: headers })
+			this.http.post(this.api + 'api/cliente/auth', body, { headers: headers })
 				.toPromise()
 				.then((response) => {
 					resolve(response);
@@ -39,7 +43,7 @@ export class HttpService {
 
   	getPlates() {
 	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get('http://localhost:3000/api/prato/')
+		    this.http.get(this.api + 'api/prato/')
 		        .toPromise()
 		        .then((response) => {
 		        	resolve(response);
@@ -50,7 +54,7 @@ export class HttpService {
 
   	getRestaurantes() {
 	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get('http://localhost:3000/api/restaurante/')
+		    this.http.get(this.api + 'api/restaurante/')
 		        .toPromise()
 		        .then((response) => {
 		        	resolve(response);
@@ -61,7 +65,7 @@ export class HttpService {
 
 	getRestaurante(id: string) {
 		let promise = new Promise((resolve, reject) => {
-			this.http.get('http://localhost:3000/api/restaurante/' + id)
+			this.http.get(this.api + 'api/restaurante/' + id)
 				.toPromise()
 				.then((response) => {
 					resolve(response);
@@ -81,7 +85,7 @@ export class HttpService {
 
 			const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-			this.http.post('http://localhost:3000/api/cliente', body, { headers: headers })
+			this.http.post(this.api + 'api/cliente', body, { headers: headers })
 				.toPromise()
 				.then((response) => {
 					resolve(response);

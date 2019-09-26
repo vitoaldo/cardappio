@@ -33,7 +33,7 @@ export class RestaurantesPage implements OnInit {
   view(id: string): void {
     let navigationExtra: NavigationExtras = {
       queryParams: {
-        id: id,
+        id: id 
       }
     };
     this.navCtrl.navigateForward('restaurante', navigationExtra);
