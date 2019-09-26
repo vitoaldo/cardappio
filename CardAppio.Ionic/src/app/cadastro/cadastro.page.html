@@ -20,9 +20,9 @@
     <ion-label>Password</ion-label>
     <ion-input [(ngModel)]="senha" type="password"></ion-input>
   </ion-item>
-  <!--
-    <ion-img></ion-img>
-    <ion-button>Buscar foto de perfil</ion-button>
-  -->
+  
+    <ion-img [src]="base64"></ion-img>
+    <ion-button (click)="takePhoto()">Buscar foto de perfil</ion-button>
+ 
   <ion-button (click)="signin()">Cadastrar</ion-button>
 </ion-content>

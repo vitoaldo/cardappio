@@ -15,4 +15,7 @@
 	</ion-item>
 	<ion-button class="logar" expand="block" (click)="logar()">Login</ion-button>
 	  <ion-button class="botton_border_button" fill="clear" expand="block" color="light" (click)="signup()">Quero me cadastrar</ion-button>
+	<ion-toggle color="primary" (click)="escolheTipo()" ></ion-toggle>
+	<ion-label *ngIf="tipoAcesso" >Cliente</ion-label>
+	<ion-label *ngIf="!tipoAcesso">Restaurante</ion-label>
 </ion-content>

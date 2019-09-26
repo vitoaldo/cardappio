@@ -21,6 +21,7 @@ export class CadastroPage implements OnInit {
 		private camera: Camera
 	) { }
 
+base64: any;
 
 cameraOptions: CameraOptions = {
 	quality: 100,
@@ -31,9 +32,8 @@ cameraOptions: CameraOptions = {
 
 takePhoto(){
 	this.camera.getPicture(this.cameraOptions).then((imageData) => {
-		let base64 = 'data:image/jpeg;base64, ' + imageData;
-		this.
-	})
+		this.base64 = 'data:image/jpeg;base64, ' + imageData;
+	});
 }
 
 	nome: string;
