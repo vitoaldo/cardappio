@@ -25,7 +25,12 @@ export class LoginPage implements OnInit {
   password: string;
   tipoAcesso: boolean = true;
 
+  
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   }
 
   logar(): void {

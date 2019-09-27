@@ -21,20 +21,14 @@ export class CadastroPage implements OnInit {
 		private camera: Camera
 	) { }
 
-base64: any;
+	base64: any;
 
-cameraOptions: CameraOptions = {
-	quality: 100,
-	destinationType: this.camera.DestinationType.FILE_URI,
-	encodingType: this.camera.EncodingType.JPEG,
-	mediaType: this.camera.MediaType.PICTURE
-}
-
-takePhoto(){
-	this.camera.getPicture(this.cameraOptions).then((imageData) => {
-		this.base64 = 'data:image/jpeg;base64, ' + imageData;
-	});
-}
+	cameraOptions: CameraOptions = {
+		quality: 100,
+		destinationType: this.camera.DestinationType.FILE_URI,
+		encodingType: this.camera.EncodingType.JPEG,
+		mediaType: this.camera.MediaType.PICTURE
+	}
 
 	nome: string;
 	email: string;
@@ -43,8 +37,12 @@ takePhoto(){
 	cliente: Cliente;
 
 	ngOnInit() {
-		this.session.exist().then(res => {
-			if (res) {
+    
+ 	}
+
+    ionViewWillEnter() {
+	  	this.session.exist().then(res => {
+			if(res){
 				this.navCtrl.navigateForward('/tabs/perfil');
 			}
 		});
@@ -63,4 +61,9 @@ takePhoto(){
 		});
 	}
 
+	takePhoto(){
+		this.camera.getPicture(this.cameraOptions).then((imageData) => {
+			this.base64 = 'data:image/jpeg;base64, ' + imageData;
+	  	});
+	}
 }
