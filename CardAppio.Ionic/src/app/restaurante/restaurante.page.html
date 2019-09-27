@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>restaurante</ion-title>  
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="restaurantes"></ion-back-button>
+      <ion-back-button defaultHref="tabs/restaurantes"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -24,9 +24,16 @@
 	</ion-card>
 	<ion-card *ngFor="let plate of plates">
 	  <ion-card-header>
-	    <!-- <ion-card-subtitle>Número de mesas: {{restaurante.quantidadeMesas}}</ion-card-subtitle> -->
-	    <ion-card-title>{{plate.nome}}</ion-card-title>
+	    <ion-card-subtitle>Tempo de preparo: {{plate.tempo}}</ion-card-subtitle>
+	    <ion-card-title>{{plate.titulo}}</ion-card-title>
 	  </ion-card-header>
+	  <ion-card-content>
+	    <ion-icon name="cash" slot="start"></ion-icon>
+	    <ion-label>{{plate.valor}}R$</ion-label>
+	  </ion-card-content>
+	  <ion-item lines="none">
+	  	<ion-text>{{plate.descricao}}</ion-text>
+  	  </ion-item>
 	  <ion-item lines="none">
 	  	<ion-button fill="outline" slot="end" (click)="order(plate._id)">Pedir</ion-button>
   	  </ion-item>

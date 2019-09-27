@@ -27,7 +27,16 @@ class pratoRepository{
     }
 
     async checkPrato(Id){
-        return this._base._model.findOne({id: Id});
+        return this._base._base.findOne({id: Id});
+    }
+
+    async getPratosByRestauranteId(id){
+        try {
+            return await this._base._model.find({restauranteId: id});
+        } catch (error) {
+            console.log('Erro ao buscar modelo: ', error);
+            return null;
+        }
     }
 }
 

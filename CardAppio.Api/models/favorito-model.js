@@ -8,7 +8,7 @@ const favoritoModel = new schema({
     restauranteId: { required: true, type: String },
 }, { versionKey: false });
 
-clienteModel.pre(next => {
+favoritoModel.pre(next => {
     next();
 });
 

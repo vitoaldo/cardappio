@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card *ngFor="let pedido of pedidos">
+	  <ion-card-header>
+	    <ion-card-subtitle>{{pedido.observacao}}</ion-card-subtitle>
+	    <ion-card-title>{{pedido.prato.titulo}}</ion-card-title>
+	  </ion-card-header>
+	  <ion-item lines="none">
+	  	<ion-text slot="start">{{pedido.status}}</ion-text>
+	  	<ion-button fill="outline" slot="end" (click)="view(pedido._id)">View</ion-button>
+  	  </ion-item>
+	</ion-card>
+</ion-content>

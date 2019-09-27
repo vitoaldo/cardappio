@@ -26,7 +26,12 @@ export class CadastroPage implements OnInit {
 
   cliente:Cliente;
 
+  
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   	this.session.exist().then(res => {
 		if(res){
 			this.navCtrl.navigateForward('/tabs/perfil');

@@ -27,11 +27,13 @@ export class RestaurantePage implements OnInit {
   local:any;
   quantidadeMesas:any;
 
-
-
   plates:any;
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   	this.session.exist().then(res => {
   		if(!res){
     		this.navCtrl.navigateForward('/');
@@ -44,7 +46,7 @@ export class RestaurantePage implements OnInit {
 		    	this.local = restaurante.local;
 		    	this.quantidadeMesas = restaurante.quantidadeMesas;
 		    });
-        this.httpService.getPlates().then(plates => {
+        this.httpService.getPlates(this.id).then(plates => {
           this.plates = plates;
         });
   		});

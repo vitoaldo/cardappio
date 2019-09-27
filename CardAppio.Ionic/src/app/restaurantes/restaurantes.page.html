@@ -1,7 +1,4 @@
 <ion-header>
-  <ion-back-button>
-    
-  </ion-back-button>
   <ion-toolbar>
     <ion-title>restaurantes</ion-title>
   </ion-toolbar>
@@ -18,7 +15,7 @@
 	    {{restaurante.local}}
 	  </ion-card-content>
 	  <ion-item lines="none">
-	  	<ion-icon name="heart-empty" slot="start"></ion-icon>
+	  	<ion-icon name="heart-empty" slot="start" (click)="add_to_favorite(restaurante._id)"></ion-icon>
 	  	<ion-button fill="outline" slot="end" (click)="view(restaurante._id)">View</ion-button>
   	  </ion-item>
 	</ion-card>

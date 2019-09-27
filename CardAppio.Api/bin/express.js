@@ -26,6 +26,6 @@ app.use('/api/restaurante', restauranteRouter);
 app.use('/api/cliente', clienteRouter);
 app.use('/api/pedido', pedidoRouter);
 app.use('/api/prato', pratoRouter);
-app.use('api/favorito', favoritoRouter);
+app.use('/api/favorito', favoritoRouter);
 
 module.exports = app;

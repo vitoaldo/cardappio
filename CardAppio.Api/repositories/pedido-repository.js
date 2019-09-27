@@ -22,6 +22,10 @@ class pedidoRepository{
         return await this._base.getById(id);
     }
 
+    async getByClienteId(clienteId) {
+        return await this._base._model.find({clienteId: clienteId});
+    }
+
     async delete(id){
         return await this._base.delete(id);
     }

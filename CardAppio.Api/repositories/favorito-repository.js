@@ -1,4 +1,4 @@
-require('../models/prato-model');
+require('../models/favorito-model');
 const base = require('../bin/base/repository-base');
 
 class favoritoRepository
@@ -29,6 +29,18 @@ class favoritoRepository
 
     async checkFavorito(Id){
         return this._base._model.findOne({id: Id});
+    }
+
+    async checkIfFavoritoRestaurante(clienteId, restauranteId){
+        return this._base._model.findOne({clienteId: clienteId, restauranteId: restauranteId});
+    } 
+
+    async deleteByClientIdAndRestauranteId(clienteId, restauranteId){
+        return this._base._model.deleteMany({clienteId: clienteId, restauranteId: restauranteId});
+    }
+
+    async getRestaurantesByClientId(clienteId){
+        return this._base._model.find({clienteId: clienteId}, {restauranteId: 1});
     }
 }
 

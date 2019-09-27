@@ -21,7 +21,12 @@ export class PerfilPage implements OnInit {
 
   cliente: Cliente;
 
+  
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   	this.session.exist().then(res => {
   		if(!res){
   			this.navCtrl.navigateForward('/');
