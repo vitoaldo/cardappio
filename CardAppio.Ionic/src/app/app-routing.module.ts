@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'restaurante', loadChildren: './restaurante/restaurante.module#RestaurantePageModule' },
   { path: 'esqueci-senha', loadChildren: './esqueci-senha/esqueci-senha.module#EsqueciSenhaPageModule' },
   { path: 'fazer-reserva', loadChildren: './fazer-reserva/fazer-reserva.module#FazerReservaPageModule' },
-  { path: 'pedidos', loadChildren: './pedidos/pedidos.module#PedidosPageModule' }
+  { path: 'pedidos', loadChildren: './pedidos/pedidos.module#PedidosPageModule' },
+  { path: 'pedido', loadChildren: './pedido/pedido.module#PedidoPageModule' }
 ];
 
 @NgModule({

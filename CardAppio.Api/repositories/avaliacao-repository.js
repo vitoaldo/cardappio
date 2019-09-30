@@ -1,9 +1,9 @@
-require('../models/pedido-model');
+require('../models/avaliacao-model');
 const base = require('../bin/base/repository-base');
 
-class pedidoRepository{
+class avaliacaoRepository{
     constructor(){
-        this._base = new base('Pedido');
+        this._base = new base('Avaliacao');
     }
 
     async create(data){
@@ -14,10 +14,6 @@ class pedidoRepository{
         return await this._base.update(id,data);
     }
 
-    async changeStatus(id, status){
-        return await this._base.update(id, {status: status});
-    }
-
     async get(){
         return await this._base.get();
     }
@@ -26,17 +22,17 @@ class pedidoRepository{
         return await this._base.getById(id);
     }
 
-    async getByClienteId(clienteId) {
-        return await this._base._model.find({clienteId: clienteId});
-    }
-
     async delete(id){
         return await this._base.delete(id);
     }
 
-    async checkPedido(Id){
-        return this._base._model.findOne({id: Id});
+    async checkAvaliacao(id){
+        return this._base._model.findOne({pedidoId: id});
+    }
+
+    async getByRestauranteId(id){
+        return this._base._model.find({restauranteId: id});
     }
 }
 
-module.exports = pedidoRepository;
+module.exports = avaliacaoRepository;

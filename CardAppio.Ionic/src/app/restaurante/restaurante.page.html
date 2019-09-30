@@ -9,13 +9,18 @@
 
 <ion-content>
 	<ion-card>
+      <img *ngIf="foto" src="{{foto}}"/>
 	  <ion-card-header>
 	    <ion-card-subtitle>Quantidade de mesas: {{quantidadeMesas}}</ion-card-subtitle>
-	    <ion-card-title>Nome: {{nome}}</ion-card-title>
+	    <ion-card-title>
+	    	Nome: {{nome}}
+	    </ion-card-title>
 	  </ion-card-header>
 	  <ion-card-content>
 	    <ion-icon name="pin" slot="start"></ion-icon>
-	    {{local}}
+	    	{{local}} -
+				<ion-icon name="star" slot="start" *ngFor="let a of selectedStars; index as i" (click)="set_rating(i, true)"></ion-icon>
+				<ion-icon name="star-outline" slot="start" *ngFor="let a of unSelectedStars; index as i" (click)="set_rating(i, false)"></ion-icon>
 	  </ion-card-content>
 	  <ion-item lines="none">
 	  	<ion-button fill="outline" slot="start" (click)="reservar_mesa(id)">Reservar mesa</ion-button>
@@ -23,6 +28,7 @@
   	  </ion-item>
 	</ion-card>
 	<ion-card *ngFor="let plate of plates">
+	  <img *ngIf="plate.foto" src="{{plate.foto}}"/>
 	  <ion-card-header>
 	    <ion-card-subtitle>Tempo de preparo: {{plate.tempo}}</ion-card-subtitle>
 	    <ion-card-title>{{plate.titulo}}</ion-card-title>
@@ -35,7 +41,7 @@
 	  	<ion-text>{{plate.descricao}}</ion-text>
   	  </ion-item>
 	  <ion-item lines="none">
-	  	<ion-button fill="outline" slot="end" (click)="order(plate._id)">Pedir</ion-button>
+	  	<ion-button fill="outline" slot="end" (click)="order(plate._id, $event)">Pedir</ion-button>
   	  </ion-item>
 	</ion-card>
 </ion-content>

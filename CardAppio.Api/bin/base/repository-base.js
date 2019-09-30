@@ -20,7 +20,7 @@ class baseRepository{
     async update(id, data){
         try {
             await this._model.findByIdAndUpdate(id, { $set: data});
-            return this._model.findById(id)
+            return this._model.findById(id);
         } catch (error) {
             console.log('Erro ao atualizar modelo: ', error);
             return null;

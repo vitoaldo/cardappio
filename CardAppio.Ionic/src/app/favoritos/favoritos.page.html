@@ -6,17 +6,18 @@
 
 <ion-content>
 	<ion-card *ngFor="let rest of restaurantes">
-		  <ion-card-header>
-		    <ion-card-subtitle>Número de mesas: {{rest.quantidadeMesas}}</ion-card-subtitle>
-		    <ion-card-title>{{rest.nome}}</ion-card-title>
-		  </ion-card-header>
-		  <ion-card-content>
-		    <ion-icon name="pin" slot="start"></ion-icon>
-		    {{rest.local}}
-		  </ion-card-content>
-		  <ion-item lines="none">
-		  	<ion-icon name="heart" slot="start" (click)="remove_favorite(rest._id)"></ion-icon>
-		  	<ion-button fill="outline" slot="end" (click)="view(rest._id)">View</ion-button>
-	  	  </ion-item>
+    	<img *ngIf="rest.foto" src="{{rest.foto}}"/>
+		<ion-card-header>
+			<ion-card-subtitle>Número de mesas: {{rest.quantidadeMesas}}</ion-card-subtitle>
+			<ion-card-title>{{rest.nome}}</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-icon name="pin" slot="start"></ion-icon>
+			{{rest.local}}
+		</ion-card-content>
+		<ion-item lines="none">
+			<ion-icon name="heart" slot="start" (click)="remove_favorite(rest._id)"></ion-icon>
+			<ion-button fill="outline" slot="end" (click)="view(rest._id)">View</ion-button>
+		</ion-item>
 	</ion-card>
 </ion-content>

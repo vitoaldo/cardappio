@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
-
+import { FazerPedidoComponent } from './fazer-pedido/fazer-pedido.component';
+import { AvaliarComponent } from './avaliar/avaliar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
+  declarations: [AppComponent, FazerPedidoComponent, AvaliarComponent],
+  entryComponents: [FazerPedidoComponent, AvaliarComponent],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

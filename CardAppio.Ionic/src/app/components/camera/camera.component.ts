@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
+import { CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'app-camera',

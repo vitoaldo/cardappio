@@ -41,9 +41,44 @@ export class HttpService {
 		return promise;
 	}
 
+	fazerPedido(prato: any, observacao: string, clienteId: string) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				prato: prato._id,
+				valor: prato.valor,
+				observacao: observacao,
+				clienteId: clienteId,
+				status: 'Em Andamento'
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/pedido/', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				}).catch((error) => { 
+					this.alertService.showAlert("Error:", "the user or the password doesn't exist.");
+				});
+		});
+		return promise;
+	}
+
   	getPedidos(id: string) {
 	  	let promise = new Promise((resolve, reject) => {
 		    this.http.get(this.api + 'api/pedido/byCliente/' + id)
+		        .toPromise()
+		        .then((response) => {
+		        	resolve(response);
+		        });
+	    });
+	    return promise;
+  	}
+
+	getPedido(id: string) {
+	  	let promise = new Promise((resolve, reject) => {
+		    this.http.get(this.api + 'api/pedido/' + id)
 		        .toPromise()
 		        .then((response) => {
 		        	resolve(response);
@@ -101,7 +136,6 @@ export class HttpService {
 			this.http.delete(this.api + 'api/favorito/' + id)
 				.toPromise()
 				.then((response) => {
-					console.log(response);
 					resolve(response);
 				});
 		});
@@ -186,6 +220,67 @@ export class HttpService {
 			const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 			this.http.post(this.api + 'api/favorito/delete/', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
+
+	changePedidoStatus(id: string, status: string) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				id: id,
+				status: status
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/pedido/changeStatus/', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
+
+	createOrUpdateRating(pedidoId:string, restauranteId:string, nota:number) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				pedidoId: pedidoId,
+				restauranteId: restauranteId,
+				nota: nota
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/avaliacao/', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
+
+	getRating(pedidoId:string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/avaliacao/getByPedido/' + pedidoId)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
+
+	getAvaliacaoByRestaurante(restauranteId:string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/avaliacao/getByRestaurante/' + restauranteId)
 				.toPromise()
 				.then((response) => {
 					resolve(response);

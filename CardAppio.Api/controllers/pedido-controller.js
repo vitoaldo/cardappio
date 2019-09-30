@@ -12,17 +12,25 @@ function pedidoController() {
 pedidoController.prototype.post = async (req, res) => {
     let data = req.body;
     let _validation = new validation();
-
-    _validation.isRequired(data.prato, `O titulo do prato é obrigatório!`);
-    _validation.isRequired(data.valor, 'O valor do prato é obrigatório');
-
-    let checkPedido = await _repositorio.checkPedido(data.email);
-    if (checkPedido) {
-        _validation.isTrue((checkPedido.id == undefined), `Pedido já cadastrado`);
-    }
-
     controllerBase.post(_repositorio, _validation, req, res);
 };
+
+pedidoController.prototype.changeStatus = async (req, res) => {
+    let data = req.body;
+    let _validation = new validation();
+
+    _validation.isRequired(data.id, 'O id é obrigatório!');
+    _validation.isRequired(data.status, 'O status é obrigatório');
+
+    let pedido = await _repositorio.changeStatus(data.id, data.status);
+
+    if (pedido) {
+        return res.status(201).send(pedido);
+    }
+  
+    return res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
+};
+
 pedidoController.prototype.put = async (req, res) => {
     let data = req.body;
     let __validation = new validation();

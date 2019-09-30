@@ -1,0 +1,12 @@
+<ion-card>
+	  <ion-card-header>
+	    <ion-card-title>Adicionar Observação</ion-card-title>
+	  </ion-card-header>
+	  <ion-card-content>
+	  	<ion-textarea  [(ngModel)]="observacao" placeholder="Coloque sua observação aqui..."></ion-textarea>
+	    <ion-button fill="outline" expand="block" (click)="pedir()">
+	    	Pedir
+	    	<ion-icon name="arrow-forward" slot="end"></ion-icon>
+	    </ion-button>
+	  </ion-card-content>
+</ion-card>

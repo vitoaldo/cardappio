@@ -34,7 +34,6 @@ class pratoRepository{
         try {
             return await this._base._model.find({restauranteId: id});
         } catch (error) {
-            console.log('Erro ao buscar modelo: ', error);
             return null;
         }
     }

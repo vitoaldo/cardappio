@@ -20,6 +20,7 @@ export class FavoritosPage implements OnInit {
 
   restaurantes:Array<any> = [];
   restaurantesFavoritos:any;
+  response:any;
   cliente: Cliente;
 
    
@@ -36,10 +37,12 @@ export class FavoritosPage implements OnInit {
           this.cliente = new Cliente(res);
           this.httpService.getRestaurantesFavoritos(this.cliente._id).then(restaurantes => {
               this.restaurantesFavoritos = restaurantes;
+              this.restaurantes=[];
                 this.restaurantesFavoritos.forEach((obj) => {
                   this.httpService.getRestaurante(obj.restauranteId).then(res => {
-                    res.favId = obj._id;
-                    this.restaurantes.push(res);
+                    this.response = res;
+                    this.response.favId = obj._id;
+                    this.restaurantes.push(this.response);
                   });
                 });
           });

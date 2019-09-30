@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/pedido-controller');
+const controller = require('../controllers/avaliacao-controller');
 
 let ctrl = new controller();
 
@@ -10,11 +10,11 @@ router.get('/', ctrl.get);
 
 router.get('/:id', ctrl.getById);
 
-router.get('/byCliente/:id', ctrl.getByClienteId);
+router.get('/getByPedido/:id', ctrl.getByPedidoId);
+
+router.get('/getByRestaurante/:id', ctrl.getByRestauranteId);
 
 router.post('/', ctrl.post);
-
-router.post('/changeStatus/', ctrl.changeStatus);
 
 router.put('/:id', ctrl.put);
 

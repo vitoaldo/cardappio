@@ -6,13 +6,18 @@
 
 <ion-content>
 	<ion-card *ngFor="let restaurante of restaurantes">
+      <img *ngIf="restaurante.foto" src="{{restaurante.foto}}"/>
 	  <ion-card-header>
 	    <ion-card-subtitle>Número de mesas: {{restaurante.quantidadeMesas}}</ion-card-subtitle>
-	    <ion-card-title>{{restaurante.nome}}</ion-card-title>
+	    <ion-card-title>
+	    	{{restaurante.nome}}
+		</ion-card-title>
 	  </ion-card-header>
 	  <ion-card-content>
 	    <ion-icon name="pin" slot="start"></ion-icon>
-	    {{restaurante.local}}
+	    {{restaurante.local}} -
+				<ion-icon name="star" slot="start" *ngFor="let a of restaurante.selectedStars; index as i"></ion-icon>
+				<ion-icon name="star-outline" slot="start" *ngFor="let a of restaurante.unSelectedStars; index as i"></ion-icon>
 	  </ion-card-content>
 	  <ion-item lines="none">
 	  	<ion-icon name="heart-empty" slot="start" (click)="add_to_favorite(restaurante._id)"></ion-icon>

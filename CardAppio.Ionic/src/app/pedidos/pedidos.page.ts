@@ -44,8 +44,13 @@ export class PedidosPage implements OnInit {
     });
   }
 
-  view(){
-    
+  view(id: string){
+     let navigationExtra: NavigationExtras = {
+      queryParams: {
+        id: id 
+      }
+    };
+    this.navCtrl.navigateForward('pedido', navigationExtra);
   }
 
 }

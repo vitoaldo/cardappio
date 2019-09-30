@@ -19,6 +19,7 @@ export class RestaurantesPage implements OnInit {
   ) { }
 
   restaurantes: any;
+  avaliacoes: any;
   cliente: Cliente;
 
   ngOnInit() {
@@ -32,6 +33,17 @@ export class RestaurantesPage implements OnInit {
       }
       this.httpService.getRestaurantes().then(restaurantes => {
         this.restaurantes = restaurantes;
+        this.restaurantes.forEach((obj) => {
+          this.httpService.getAvaliacaoByRestaurante(obj._id).then(res => {
+            let nota:number=0;
+            this.avaliacoes = res;
+            this.avaliacoes.forEach((avaliacao) => {
+              nota+=avaliacao.nota;
+            });
+            obj.selectedStars=new Array(nota);
+            obj.unSelectedStars=new Array(5 - nota);
+          });
+        });
       });
     });
   }
@@ -49,7 +61,6 @@ export class RestaurantesPage implements OnInit {
     this.session.get().then(res => {
       this.cliente = new Cliente(res);
         this.httpService.addToFavorite(restauranteId, this.cliente._id).then(res => {
-          console.log('added');
         });
     });
   }  
@@ -58,7 +69,6 @@ export class RestaurantesPage implements OnInit {
     this.session.get().then(res => {
       this.cliente = new Cliente(res);
         this.httpService.removeFromFavorite(restauranteId, this.cliente._id).then(res => {
-          console.log('removed');
         });
     });
   }
