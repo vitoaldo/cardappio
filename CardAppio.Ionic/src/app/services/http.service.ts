@@ -102,4 +102,8 @@ export class HttpService {
 		return promise;
 	}
 
+	criarReserva(){
+		
+	}
+
 }

@@ -15,15 +15,9 @@ export class FazerReservaPage implements OnInit {
   constructor() {
   this.customPickerOptions = {
     buttons: [{
-      text: 'Save',
+      text: 'Salvar',
       handler: (date) => {
-        let today = new Date();
-        if (date > today){
-          console.log('Data valida!', date);
-        }
-        else {
-          console.log('DATA INVALIDA', date);
-        }
+        
       }
     }, {
       text: 'Log',

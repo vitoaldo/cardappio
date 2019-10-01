@@ -5,11 +5,24 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-label>Quantas pessoas?</ion-label>
+<ion-select cancelText="Cancel" okText="OK">
+  <ion-select-option>1</ion-select-option>
+  <ion-select-option>2</ion-select-option>
+  <ion-select-option>3</ion-select-option>
+  <ion-select-option>4</ion-select-option>
+  <ion-select-option>5 ou mais</ion-select-option>
+</ion-select>
+
 <ion-content>
   <ion-button>
     <ion-datetime [pickerOptions]="customPickerOptions" placeholder="Escolha uma data para sua reserva!"
       displayFormat="DD/MM/YY" min="2019" max="2020">
     </ion-datetime>
+  </ion-button>
+
+  <ion-button>
+    Confirmar Agendamento
   </ion-button>
 
 </ion-content>
