@@ -29,7 +29,7 @@ export class FazerPedidoComponent implements OnInit {
   }
 
   pedir(){
-    this.session.get().then(res => {
+    this.session.get('cliente').then(res => {
       this.cliente = new Cliente(res);
     	this.httpService.getPrato(this.pratoId).then(prato => {
     		this.prato = prato;

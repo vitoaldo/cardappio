@@ -21,7 +21,7 @@
 	  <ion-item lines="none">
 	  	<ion-button fill="outline" slot="start" (click)="cancelar_pedido(id)" *ngIf="status == 'Em Andamento'">Cancelar pedido</ion-button>
 	  	<ion-button fill="outline" slot="start" (click)="avaliar_pedido(id, $event)" *ngIf="status == 'Concluído'">Avaliar Pedido</ion-button>
-	  	<ion-button fill="outline" slot="start" (click)="refazer_pedido(prato._id, $event)" *ngIf="status == 'Concluído'">Refazer Pedido</ion-button>
+	  	<ion-button fill="outline" slot="start" (click)="refazer_pedido(pratoId, $event)" *ngIf="status == 'Concluído' && mesaExist == true && mesa.restauranteId == restauranteId">Refazer Pedido</ion-button>
   	  </ion-item>
 	</ion-card>
 </ion-content>

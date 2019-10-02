@@ -5,6 +5,8 @@ import { NavController } from '@ionic/angular';
 import { Session } from '../session/session';
 import { PopoverController } from '@ionic/angular';
 import { FazerPedidoComponent } from '../fazer-pedido/fazer-pedido.component';
+import { CheckinComponent } from '../checkin/checkin.component';
+import { Mesa } from '../models/mesaModel';
 
 @Component({
   selector: 'app-restaurante',
@@ -33,13 +35,15 @@ export class RestaurantePage implements OnInit {
     
   avaliacoes:any;
   plates:any;
+  mesaExist:boolean=false;
+  mesa: Mesa;
 
   ngOnInit() {
     
   }
 
   ionViewWillEnter() {
-  	this.session.exist().then(res => {
+  	this.session.exist('cliente').then(res => {
   		if(!res){
     		this.navCtrl.navigateForward('/');
     	}
@@ -57,6 +61,7 @@ export class RestaurantePage implements OnInit {
             this.avaliacoes = res;
             this.avaliacoes.forEach((avaliacao) => {
               nota+=avaliacao.nota;
+              nota = nota/this.avaliacoes.length;
             });
             this.selectedStars=new Array(nota);
             this.unSelectedStars=new Array(5 - nota);
@@ -66,6 +71,16 @@ export class RestaurantePage implements OnInit {
           this.plates = plates;
         });
   		});
+      this.session.exist('mesa').then(res => {
+        if (res) {
+          this.mesaExist = true;
+          this.session.get('mesa').then(mesa => {
+            if (mesa) {
+              this.mesa = mesa;
+            }
+          });
+        }
+      });
   	});
   }
 
@@ -95,6 +110,18 @@ export class RestaurantePage implements OnInit {
         component: FazerPedidoComponent,
         componentProps: {
           pratoId: id  
+        },
+        event: ev,
+        translucent: true
+      });
+      popover.present();
+  }
+
+  async check_in(id: string, ev: any) {
+      const popover = await this.popoverController.create({
+        component: CheckinComponent,
+        componentProps: {
+          restauranteId: id  
         },
         event: ev,
         translucent: true

@@ -41,7 +41,7 @@ export class CadastroPage implements OnInit {
  	}
 
     ionViewWillEnter() {
-	  	this.session.exist().then(res => {
+	  	this.session.exist('cliente').then(res => {
 			if(res){
 				this.navCtrl.navigateForward('/tabs/perfil');
 			}
@@ -52,7 +52,7 @@ export class CadastroPage implements OnInit {
 		this.httpService.createAccount(this.nome, this.email, this.senha).then(cliente => {
 			if (cliente) {
 				this.cliente = new Cliente(cliente);
-				this.session.create(this.cliente);
+				this.session.createCliente(this.cliente);
 				this.navCtrl.navigateForward('tabs');
 			}
 			else {

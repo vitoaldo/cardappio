@@ -1,6 +1,8 @@
 import { Storage } from "@ionic/storage";
 import { Injectable } from '@angular/core';
 import { Cliente } from '../models/clienteModel';
+import { Mesa } from '../models/mesaModel';
+
 
 @Injectable({
     providedIn: 'root'
@@ -11,20 +13,24 @@ export class Session {
 
     }
 
-    create(cliente: Cliente) {
+    createCliente(cliente: Cliente) {
         this.storage.set('cliente', cliente);
     }
 
-    get(): Promise<any> {
-        return this.storage.get('cliente');
+    createMesaCheckin(mesa: Mesa) {
+        this.storage.set('mesa', mesa);
     }
 
-    remove() {
-        this.storage.remove('cliente');
+    get(session: string): Promise<any> {
+        return this.storage.get(session);
     }
 
-    exist(): Promise<boolean> {
-        return this.get().then(res => {
+    remove(session: string) {
+        this.storage.remove(session);
+    }
+
+    exist(session: string): Promise<boolean> {
+        return this.get(session).then(res => {
             if(res) {
                 return true;
             } else {

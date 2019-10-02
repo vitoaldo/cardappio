@@ -31,6 +31,22 @@ pedidoController.prototype.changeStatus = async (req, res) => {
     return res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
 };
 
+pedidoController.prototype.pagar = async (req, res) => {
+    let data = req.body;
+    let _validation = new validation();
+
+    _validation.isRequired(data.clienteId, 'O id é obrigatório!');
+
+    let pedido = await _repositorio.pagar(data.clienteId);
+        console.log(pedido);
+
+    if (pedido) {
+        return res.status(201).send(pedido);
+    }
+  
+    return res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
+};
+
 pedidoController.prototype.put = async (req, res) => {
     let data = req.body;
     let __validation = new validation();

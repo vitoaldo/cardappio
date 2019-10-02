@@ -40,6 +40,17 @@ restauranteController.prototype.post = async (req, res) =>{
     
     controllerBase.post(_repositorio, _validation, req, res);
 };
+restauranteController.prototype.getRestauranteByName = async (req, res) =>{
+    let data = req.body;
+    let _validation = new validation();
+
+    let restaurantes = await _repositorio.getRestauranteByName(data.name);
+    if (restaurantes) {
+        return res.status(201).send(restaurantes);
+    }
+  
+    return res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
+};
 restauranteController.prototype.put = async (req, res) =>{
     let data = req.body;
     let _validation = new validation();

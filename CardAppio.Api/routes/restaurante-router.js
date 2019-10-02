@@ -12,6 +12,8 @@ router.get('/:id', ctrl.getById);
 
 router.post('/', ctrl.post);
 
+router.post('/getRestauranteByName', ctrl.getRestauranteByName);
+
 router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);
