@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
 
 
 @Component({
@@ -12,24 +13,28 @@ export class FazerReservaPage implements OnInit {
   customPickerOptions: any;
   dataEscolhida: any;
 
-  constructor() {
-  this.customPickerOptions = {
-    buttons: [{
-      text: 'Salvar',
-      handler: (date) => {
-        
-      }
-    }, {
-      text: 'Log',
-      handler: () => {
-        console.log('Clicked Log. Do not Dismiss.');
-        return false;
-      }
-    }]
-  }
+  constructor(private httpService: HttpService) {
+    this.customPickerOptions = {
+      buttons: [{
+        text: 'Escolher data',
+        handler: (date) => {
+          this.dataEscolhida = date;
+        }
+      }, {
+        text: 'Fechar',
+        handler: () => {
+          console.log('Clicked Log. Do not Dismiss.');
+          return false;
+        }
+      }]
+    }
   }
 
   ngOnInit() {
+  }
+
+  confirmarAgendamento() {
+    // this.httpService.postReserva()
   }
 
 }

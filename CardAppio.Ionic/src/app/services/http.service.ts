@@ -34,7 +34,7 @@ export class HttpService {
 				.toPromise()
 				.then((response) => {
 					resolve(response);
-				}).catch((error) => { 
+				}).catch((error) => {
 					this.alertService.showAlert("Error:", "the user or the password doesn't exist.");
 				});
 		});
@@ -58,67 +58,67 @@ export class HttpService {
 				.toPromise()
 				.then((response) => {
 					resolve(response);
-				}).catch((error) => { 
+				}).catch((error) => {
 					this.alertService.showAlert("Error:", "the user or the password doesn't exist.");
 				});
 		});
 		return promise;
 	}
 
-  	getPedidos(id: string) {
-	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get(this.api + 'api/pedido/byCliente/' + id)
-		        .toPromise()
-		        .then((response) => {
-		        	resolve(response);
-		        });
-	    });
-	    return promise;
-  	}
+	getPedidos(id: string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/pedido/byCliente/' + id)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
 
 	getPedido(id: string) {
-	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get(this.api + 'api/pedido/' + id)
-		        .toPromise()
-		        .then((response) => {
-		        	resolve(response);
-		        });
-	    });
-	    return promise;
-  	}
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/pedido/' + id)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
 
-  	getPlates(id: string) {
-	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get(this.api + 'api/prato/restaurante/' + id)
-		        .toPromise()
-		        .then((response) => {
-		        	resolve(response);
-		        });
-	    });
-	    return promise;
-  	}	
+	getPlates(id: string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/prato/restaurante/' + id)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
 
-  	getPrato(id: string) {
-	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get(this.api + 'api/prato/' + id)
-		        .toPromise()
-		        .then((response) => {
-		        	resolve(response);
-		        });
-	    });
-	    return promise;
-  	}
+	getPrato(id: string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/prato/' + id)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
 
-  	getRestaurantes() {
-	  	let promise = new Promise((resolve, reject) => {
-		    this.http.get(this.api + 'api/restaurante/')
-		        .toPromise()
-		        .then((response) => {
-		        	resolve(response);
-		        });
-	    });
-	    return promise;
-  	}
+	getRestaurantes() {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/restaurante/')
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				});
+		});
+		return promise;
+	}
 
 	getRestaurante(id: string) {
 		let promise = new Promise((resolve, reject) => {
@@ -142,7 +142,7 @@ export class HttpService {
 		return promise;
 	}
 
-	getRestaurantesFavoritos(id: string){
+	getRestaurantesFavoritos(id: string) {
 		let promise = new Promise((resolve, reject) => {
 
 			let body = {
@@ -155,7 +155,7 @@ export class HttpService {
 				.toPromise()
 				.then((response) => {
 					resolve(response);
-				}).catch((error) => { 
+				}).catch((error) => {
 					this.alertService.showAlert("Error:", "error.");
 				});
 		});
@@ -190,7 +190,7 @@ export class HttpService {
 		return promise;
 	}
 
-		
+
 	addToFavorite(restauranteId: string, clienteId: string) {
 		let promise = new Promise((resolve, reject) => {
 
@@ -248,7 +248,7 @@ export class HttpService {
 		return promise;
 	}
 
-	createOrUpdateRating(pedidoId:string, restauranteId:string, nota:number) {
+	createOrUpdateRating(pedidoId: string, restauranteId: string, nota: number) {
 		let promise = new Promise((resolve, reject) => {
 
 			let body = {
@@ -268,7 +268,7 @@ export class HttpService {
 		return promise;
 	}
 
-	getRating(pedidoId:string) {
+	getRating(pedidoId: string) {
 		let promise = new Promise((resolve, reject) => {
 			this.http.get(this.api + 'api/avaliacao/getByPedido/' + pedidoId)
 				.toPromise()
@@ -279,12 +279,33 @@ export class HttpService {
 		return promise;
 	}
 
-	getAvaliacaoByRestaurante(restauranteId:string) {
+	getAvaliacaoByRestaurante(restauranteId: string) {
 		let promise = new Promise((resolve, reject) => {
 			this.http.get(this.api + 'api/avaliacao/getByRestaurante/' + restauranteId)
 				.toPromise()
 				.then((response) => {
 					resolve(response);
+				});
+		});
+		return promise;
+	}
+
+	postReserva(reserva: any) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				restauranteId:
+					clienteId: id
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/favorito/getRestauranteByClientId', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				}).catch((error) => {
+					this.alertService.showAlert("Error:", "error.");
 				});
 		});
 		return promise;
