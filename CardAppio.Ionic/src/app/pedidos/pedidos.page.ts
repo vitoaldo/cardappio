@@ -26,11 +26,11 @@ export class PedidosPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.session.exist().then(res => {
+    this.session.exist('cliente').then(res => {
       if (!res) {
         this.navCtrl.navigateForward('/');
       }
-      this.session.get().then(cliente => {
+      this.session.get('cliente').then(cliente => {
       	this.cliente = cliente;
 	      this.httpService.getPedidos(this.cliente._id).then(pedidos => {
 	        this.pedidos = pedidos;

@@ -13,11 +13,12 @@ import { HttpClientModule} from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FazerPedidoComponent } from './fazer-pedido/fazer-pedido.component';
 import { AvaliarComponent } from './avaliar/avaliar.component';
+import { CheckinComponent } from './checkin/checkin.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, FazerPedidoComponent, AvaliarComponent],
-  entryComponents: [FazerPedidoComponent, AvaliarComponent],
+  declarations: [AppComponent, FazerPedidoComponent, AvaliarComponent, CheckinComponent],
+  entryComponents: [FazerPedidoComponent, AvaliarComponent, CheckinComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), FormsModule],
   providers: [
     StatusBar,

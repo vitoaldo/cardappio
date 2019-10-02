@@ -27,7 +27,7 @@ export class RestaurantesPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.session.exist().then(res => {
+    this.session.exist('cliente').then(res => {
       if (!res) {
         this.navCtrl.navigateForward('/');
       }
@@ -39,6 +39,7 @@ export class RestaurantesPage implements OnInit {
             this.avaliacoes = res;
             this.avaliacoes.forEach((avaliacao) => {
               nota+=avaliacao.nota;
+              nota = nota/this.avaliacoes.length;
             });
             obj.selectedStars=new Array(nota);
             obj.unSelectedStars=new Array(5 - nota);
@@ -58,7 +59,7 @@ export class RestaurantesPage implements OnInit {
   }  
 
   add_to_favorite(restauranteId: string): void {
-    this.session.get().then(res => {
+    this.session.get('cliente').then(res => {
       this.cliente = new Cliente(res);
         this.httpService.addToFavorite(restauranteId, this.cliente._id).then(res => {
         });
@@ -66,7 +67,7 @@ export class RestaurantesPage implements OnInit {
   }  
 
   remove_from_favorite(restauranteId: string): void {
-    this.session.get().then(res => {
+    this.session.get('cliente').then(res => {
       this.cliente = new Cliente(res);
         this.httpService.removeFromFavorite(restauranteId, this.cliente._id).then(res => {
         });

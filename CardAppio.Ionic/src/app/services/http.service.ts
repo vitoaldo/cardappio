@@ -131,6 +131,48 @@ export class HttpService {
 		return promise;
 	}
 
+
+	getRestaurantesByName(name: string) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				name: name
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/restaurante/getRestauranteByName', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				}).catch((error) => { 
+					this.alertService.showAlert("Error:", "error.");
+				});
+		});
+		return promise;
+	}
+
+
+	pagarPedidos(clienteId: string) {
+		let promise = new Promise((resolve, reject) => {
+
+			let body = {
+				clienteId: clienteId
+			};
+
+			const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+			this.http.post(this.api + 'api/pedido/pagar', body, { headers: headers })
+				.toPromise()
+				.then((response) => {
+					resolve(response);
+				}).catch((error) => { 
+					this.alertService.showAlert("Error:", "error.");
+				});
+		});
+		return promise;
+	}
+
 	deleteRestauranteFromFavoritos(id: string) {
 		let promise = new Promise((resolve, reject) => {
 			this.http.delete(this.api + 'api/favorito/' + id)

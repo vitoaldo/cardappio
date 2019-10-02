@@ -24,7 +24,7 @@
 	  </ion-card-content>
 	  <ion-item lines="none">
 	  	<ion-button fill="outline" slot="start" (click)="reservar_mesa(id)">Reservar mesa</ion-button>
-	  	<ion-button fill="outline" slot="end" (click)="read_qr_code(id)">Ler qr-code</ion-button>
+	  	<ion-button *ngIf="mesaExist == false" fill="outline" slot="end" (click)="check_in(id, $event)">Fazer Check-in</ion-button>
   	  </ion-item>
 	</ion-card>
 	<ion-card *ngFor="let plate of plates">
@@ -41,7 +41,7 @@
 	  	<ion-text>{{plate.descricao}}</ion-text>
   	  </ion-item>
 	  <ion-item lines="none">
-	  	<ion-button fill="outline" slot="end" (click)="order(plate._id, $event)">Pedir</ion-button>
+	  	<ion-button *ngIf="mesaExist == true && mesa.restauranteId == id" fill="outline" slot="end" (click)="order(plate._id, $event)">Pedir</ion-button>
   	  </ion-item>
 	</ion-card>
 </ion-content>

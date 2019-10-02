@@ -16,6 +16,8 @@ router.post('/', ctrl.post);
 
 router.post('/changeStatus/', ctrl.changeStatus);
 
+router.post('/pagar/', ctrl.pagar);
+
 router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);
