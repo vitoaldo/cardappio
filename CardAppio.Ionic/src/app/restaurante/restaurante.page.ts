@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, NavigationExtras } from "@angular/router";
 import { HttpService } from '../services/http.service';
 import { NavController } from '@ionic/angular';
 import { Session } from '../session/session';
@@ -84,11 +84,13 @@ export class RestaurantePage implements OnInit {
   	});
   }
 
-  reservar_mesa(id: string): void{
-    //TODO
-    //fazer toda a leitura/validacao do qr aqui
-    //colocar a mesa atual na sessao
-    //depois direcionar para a tela de pratos
+  reservar_mesa(): void{
+    let navigationExtra: NavigationExtras = {
+      queryParams: {
+        id: id 
+      }
+    };
+    this.navCtrl.navigateForward('/fazer-reserva', navigationExtra);
   }
 
   read_qr_code(id: string): void{

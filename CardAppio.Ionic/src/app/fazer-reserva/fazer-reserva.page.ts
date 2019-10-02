@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,8 +13,9 @@ export class FazerReservaPage implements OnInit {
   customDayShortNames = ['s\u00f8n', 'man', 'tir', 'ons', 'tor', 'fre', 'l\u00f8r'];
   customPickerOptions: any;
   dataEscolhida: any;
+  restauranteId: string;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private route: ActivatedRoute) {
     this.customPickerOptions = {
       buttons: [{
         text: 'Escolher data',
@@ -31,10 +33,13 @@ export class FazerReservaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.restauranteId = params["id"];
+    }
   }
 
   confirmarAgendamento() {
-    // this.httpService.postReserva()
+   // this.httpService.postReserva()
   }
 
 }
