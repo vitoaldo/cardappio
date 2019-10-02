@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pagar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-item>
+		<ion-label>Numero do Cartao</ion-label>
+		<ion-input [(ngModel)]="nome" type="text"></ion-input>
+	</ion-item>
+		<ion-item>
+		<ion-label>Nome Completo</ion-label>
+	<ion-input [(ngModel)]="email" type="email"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label>CVV</ion-label>
+		<ion-input [(ngModel)]="senha" type="password"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label>Data de Vencimento</ion-label>
+	    <ion-datetime [pickerOptions]="customPickerOptions" placeholder="{{dataEscolhida}}"
+	      displayFormat="MM/YY" min="2019" max="2030">
+	    </ion-datetime>
+	</ion-item>
+	<ion-item>
+		<ion-text>Valor total: R${{valorTotal}}</ion-text>
+	</ion-item>
+    <ion-button expand="block" color="cardappio" (click)="pagar()">pagar</ion-button>
+	<ion-item lines="none">
+		<ion-text>Lista de pedidos não pagos:</ion-text>
+	</ion-item>
+	<ion-card *ngFor="let pedido of pedidosNaoPagos">
+	    <img *ngIf="pedido.prato.hasOwnProperty('foto') && pedido.prato.foto" src="{{pedido.prato.foto}}"/>
+		<ion-card-header>
+			<ion-card-subtitle>{{pedido.observacao}}</ion-card-subtitle>
+		    <ion-card-title>{{pedido.prato.titulo}}</ion-card-title>
+	    </ion-card-header>
+	    <ion-item lines="none">
+	  		<ion-text slot="start">{{pedido.status}}</ion-text>
+		</ion-item>
+	</ion-card>
+</ion-content>

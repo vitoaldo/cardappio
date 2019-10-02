@@ -28,13 +28,13 @@ export class PerfilPage implements OnInit {
   }
 
   ionViewWillEnter() {
-  	this.session.exist().then(res => {
+  	this.session.exist('cliente').then(res => {
   		if(!res){
   			this.navCtrl.navigateForward('/');
   		}
 	  });
 
-  	this.session.get().then(res => {
+  	this.session.get('cliente').then(res => {
         this.cliente = new Cliente(res);
 	  	this.nome = this.cliente.nomeCompleto; 
 	  	this.email = this.cliente.email; 
@@ -43,7 +43,11 @@ export class PerfilPage implements OnInit {
   }
 
   logout(): void {
-  	this.session.remove();
+  	this.session.remove('cliente');
 	  this.navCtrl.navigateForward('/');
+  }
+
+  pagar(): void {
+    this.navCtrl.navigateForward('/pagar');
   }
 }

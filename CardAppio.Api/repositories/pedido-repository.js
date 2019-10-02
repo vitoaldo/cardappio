@@ -37,6 +37,21 @@ class pedidoRepository{
     async checkPedido(Id){
         return this._base._model.findOne({id: Id});
     }
+
+    async pagar(clienteId){
+        return this._base._model.updateMany(
+            {
+                clienteId : clienteId,
+                status: { $ne: 'Cancelado' }
+            },
+            {
+                $set :
+                {
+                    status : "Concluído"
+                }
+            }
+        );
+    }
 }
 
 module.exports = pedidoRepository;

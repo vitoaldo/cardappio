@@ -13,7 +13,7 @@ export class TabsPage implements OnInit {
   constructor(public navCtrl: NavController, private session: Session) { }
 
   ngOnInit() {
-    this.session.exist().then(res => {
+    this.session.exist('cliente').then(res => {
       if (!res) {
         this.navCtrl.navigateForward('/');
       }

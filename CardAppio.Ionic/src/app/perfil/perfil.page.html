@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>perfil</ion-title>
+    <ion-back-button defaultHref="tabs/perfil"></ion-back-button>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +14,7 @@
 		<ion-label>Email: {{email}}</ion-label>
 	</ion-item>
 	<ion-item>
-		<ion-button>Cadastrar cartão</ion-button>
+		<ion-button (click)="pagar()">Ir para pagamento</ion-button>
 		<ion-button (click)="logout()">Logout</ion-button>
 	</ion-item>
 </ion-content>

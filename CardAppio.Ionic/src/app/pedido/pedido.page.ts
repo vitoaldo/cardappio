@@ -6,6 +6,7 @@ import { Session } from '../session/session';
 import { PopoverController } from '@ionic/angular';
 import { AvaliarComponent } from '../avaliar/avaliar.component';
 import { FazerPedidoComponent } from '../fazer-pedido/fazer-pedido.component';
+import { Mesa } from '../models/mesaModel';
 
 @Component({
   selector: 'app-pedido',
@@ -30,13 +31,17 @@ export class PedidoPage implements OnInit {
   prato:any;
   titulo:any;
   foto:string;
+  pratoId:string;
+  restauranteId:string;
+  mesaExist:boolean=false;
+  mesa: Mesa;
 
   ngOnInit() {
     
   }
 
   ionViewWillEnter() {
-  	this.session.exist().then(res => {
+  	this.session.exist('cliente').then(res => {
   		if(!res){
     		this.navCtrl.navigateForward('/');
     	}
@@ -48,11 +53,23 @@ export class PedidoPage implements OnInit {
           this.status = this.pedido.status;
           this.httpService.getPrato(this.pedido.prato).then(res => {
             this.prato = res;
+            this.pratoId = this.prato._id;
             this.titulo = this.prato.titulo;
             this.foto = this.prato.foto;
+            this.restauranteId = this.prato.restauranteId;
           });
 		    });
   		});
+      this.session.exist('mesa').then(res => {
+        if (res) {
+          this.mesaExist = true;
+          this.session.get('mesa').then(mesa => {
+            if (mesa) {
+              this.mesa = mesa;
+            }
+          });
+        }
+      });
   	});
   }
 

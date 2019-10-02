@@ -33,6 +33,10 @@ class restauranteRepository{
     async checkRestaurante(Id){
         return this._base._model.findOne({id: Id});
     }
+
+    async getRestauranteByName(name){
+        return this._base._model.find({nome: name});
+    }
 }
 
 module.exports = restauranteRepository;
