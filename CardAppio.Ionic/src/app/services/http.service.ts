@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SpinnerService } from './spinner.service';
+import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
 import { NetworkService } from './network.service';
-import { httpResultModel } from '../models/httpResultModel';
+import { SpinnerService } from './spinner.service';
 import { UrlAPIService } from './url-api.service';
 
 @Injectable({
@@ -145,7 +144,7 @@ export class HttpService {
 				.toPromise()
 				.then((response) => {
 					resolve(response);
-				}).catch((error) => { 
+				}).catch((error) => {
 					this.alertService.showAlert("Error:", "error.");
 				});
 		});
@@ -166,7 +165,7 @@ export class HttpService {
 				.toPromise()
 				.then((response) => {
 					resolve(response);
-				}).catch((error) => { 
+				}).catch((error) => {
 					this.alertService.showAlert("Error:", "error.");
 				});
 		});
@@ -348,6 +347,17 @@ export class HttpService {
 					resolve(response);
 				}).catch((error) => {
 					this.alertService.showAlert("Error:", "error.");
+				});
+		});
+		return promise;
+	}
+
+	getReservas(clienteId: string) {
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.api + 'api/reserva/getById/' + clienteId)
+				.toPromise()
+				.then((response) => {
+					resolve(response);
 				});
 		});
 		return promise;

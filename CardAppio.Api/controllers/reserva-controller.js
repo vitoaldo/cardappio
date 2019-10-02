@@ -5,11 +5,11 @@ const controllerBase = require('../bin/base/controller-base');
 const validation = require('../bin/helpers/validation');
 const _repositorio = new repositorio()
 
-function reservaController(){
+function reservaController() {
 
 }
 
-reservaController.prototype.post = async (req, res) =>{
+reservaController.prototype.post = async (req, res) => {
     let data = req.body;
     let _validation = new validation();
     console.log(data);
@@ -17,10 +17,10 @@ reservaController.prototype.post = async (req, res) =>{
     if (checkReserva) {
         _validation.isTrue((checkReserva.id != undefined), `Reserva já cadastrada`);
     }
-    
+
     controllerBase.post(_repositorio, _validation, req, res);
 };
-reservaController.prototype.put = async (req, res) =>{
+reservaController.prototype.put = async (req, res) => {
     let data = req.body;
     let __validation = new validation();
     let checkReserva = await _repositorio.checkReserva(req.params.id);
