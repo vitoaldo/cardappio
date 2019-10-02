@@ -42,12 +42,7 @@ restauranteController.prototype.post = async (req, res) =>{
 };
 restauranteController.prototype.put = async (req, res) =>{
     let data = req.body;
-    let __validation = new validation();
-    let checkRestaurante = await _repositorio.checkRestaurante(req.params.id);
-
-    if (checkRestaurante) {
-        _validation.isTrue((chekcPrato.chekcPrato == undefined), `Restaurante não está cadastrado com o email ${data.email}`);
-    }
+    let _validation = new validation();
 
     controllerBase.put(_repositorio, _validation, req, res);
 };

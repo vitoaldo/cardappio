@@ -14,12 +14,20 @@ class pedidoRepository{
         return await this._base.update(id,data);
     }
 
+    async changeStatus(id, status){
+        return await this._base.update(id, {status: status});
+    }
+
     async get(){
         return await this._base.get();
     }
 
     async getById(id){
         return await this._base.getById(id);
+    }
+
+    async getByClienteId(clienteId) {
+        return await this._base._model.find({clienteId: clienteId});
     }
 
     async delete(id){

@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'reserva', loadChildren: '../reserva/reserva.module#ReservaPageModule' },
       { path: 'perfil', loadChildren: '../perfil/perfil.module#PerfilPageModule' },
       { path: 'restaurantes', loadChildren: '../restaurantes/restaurantes.module#RestaurantesPageModule' },
+      { path: 'pedidos', loadChildren: '../pedidos/pedidos.module#PedidosPageModule' },
     ]
   },
   {

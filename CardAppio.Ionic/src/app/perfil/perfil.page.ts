@@ -18,10 +18,16 @@ export class PerfilPage implements OnInit {
 
   nome:string;
   email:string;
+  foto:string;
 
   cliente: Cliente;
 
+  
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   	this.session.exist().then(res => {
   		if(!res){
   			this.navCtrl.navigateForward('/');
@@ -32,6 +38,7 @@ export class PerfilPage implements OnInit {
         this.cliente = new Cliente(res);
 	  	this.nome = this.cliente.nomeCompleto; 
 	  	this.email = this.cliente.email; 
+      this.foto = this.cliente.foto; 
     });
   }
 

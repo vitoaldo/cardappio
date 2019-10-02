@@ -10,4 +10,5 @@ export class Cliente extends Model {
     email: string;
     senha: string;
     dataCadastro: string;
+    foto: string;
 }

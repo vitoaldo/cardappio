@@ -12,6 +12,10 @@ router.get('/:id', ctrl.getById);
 
 router.post('/', ctrl.post);
 
+router.post('/findRestaurante', ctrl.findIfFavorito);
+router.post('/getRestauranteByClientId', ctrl.getRestaurantesByClientId);
+router.post('/delete', ctrl.deleteByClientIdAndRestauranteId);
+
 router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);

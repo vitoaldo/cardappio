@@ -25,14 +25,18 @@ export class LoginPage implements OnInit {
   password: string;
   tipoAcesso: boolean = true;
 
+  
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   }
 
   logar(): void {
     if (this.tipoAcesso === true) {
       this.httpService.verifyCanLogin(this.email, this.password).then(cliente => {
         if (cliente) {
-          console.log('RETORNO DO VERIFY CAN LOGIN =>', cliente);
           this.cliente = new Cliente(cliente);
           this.session.create(this.cliente);
           this.navCtrl.navigateForward('tabs');

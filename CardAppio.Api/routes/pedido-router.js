@@ -10,7 +10,11 @@ router.get('/', ctrl.get);
 
 router.get('/:id', ctrl.getById);
 
+router.get('/byCliente/:id', ctrl.getByClienteId);
+
 router.post('/', ctrl.post);
+
+router.post('/changeStatus/', ctrl.changeStatus);
 
 router.put('/:id', ctrl.put);
 

@@ -3,7 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { HttpService } from '../services/http.service';
 import { NavController } from '@ionic/angular';
 import { Session } from '../session/session';
-// import { DatePicker } from '@ionic-native/date-picker';
+import { PopoverController } from '@ionic/angular';
+import { FazerPedidoComponent } from '../fazer-pedido/fazer-pedido.component';
 
 @Component({
   selector: 'app-restaurante',
@@ -16,22 +17,28 @@ export class RestaurantePage implements OnInit {
   	private route: ActivatedRoute,
   	public httpService: HttpService,
   	public navCtrl: NavController,
-  	public session: Session
-    // ,
-    // public datePicker: DatePicker
+  	public session: Session,
+    public popoverController: PopoverController
   ) { }
 
-  id:string;
-  nome:any;
-  email:any;
-  local:any;
-  quantidadeMesas:any;
-
-
-
+  restaurante:any;
+    id:string;
+    nome:string;
+    email:string;
+    local:string;
+    foto:string;
+    quantidadeMesas:number;
+    selectedStars:Array<number>;
+    unSelectedStars:Array<number>;
+    
+  avaliacoes:any;
   plates:any;
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
   	this.session.exist().then(res => {
   		if(!res){
     		this.navCtrl.navigateForward('/');
@@ -39,12 +46,23 @@ export class RestaurantePage implements OnInit {
 	  	this.route.queryParams.subscribe(params => {
   		  this.id = params["id"];
 		    this.httpService.getRestaurante(this.id).then(restaurante => {
-		    	this.nome = restaurante.nome;
-		    	this.email = restaurante.email;
-		    	this.local = restaurante.local;
-		    	this.quantidadeMesas = restaurante.quantidadeMesas;
+		    	this.restaurante = restaurante;
+          this.nome = this.restaurante.nome;
+          this.email = this.restaurante.email;
+          this.local = this.restaurante.local;
+          this.foto = this.restaurante.foto;
+          this.quantidadeMesas = this.restaurante.quantidadeMesas;
+          this.httpService.getAvaliacaoByRestaurante(this.restaurante._id).then(res => {
+            let nota:number=0;
+            this.avaliacoes = res;
+            this.avaliacoes.forEach((avaliacao) => {
+              nota+=avaliacao.nota;
+            });
+            this.selectedStars=new Array(nota);
+            this.unSelectedStars=new Array(5 - nota);
+          });
 		    });
-        this.httpService.getPlates().then(plates => {
+        this.httpService.getPlates(this.id).then(plates => {
           this.plates = plates;
         });
   		});
@@ -56,7 +74,6 @@ export class RestaurantePage implements OnInit {
     //fazer toda a leitura/validacao do qr aqui
     //colocar a mesa atual na sessao
     //depois direcionar para a tela de pratos
-    console.log(id);
   }
 
   read_qr_code(id: string): void{
@@ -64,7 +81,6 @@ export class RestaurantePage implements OnInit {
     //fazer toda a leitura/validacao do qr aqui
     //colocar a mesa atual na sessao
     //depois direcionar para a tela de pratos
-    console.log(id);
     // this.datePicker.show({
     //   date: new Date(),
     //   mode: 'date'
@@ -72,6 +88,18 @@ export class RestaurantePage implements OnInit {
     //   date => console.log('Got date: ', date),
     //   err => console.log('Error occurred while getting date: ', err)
     // );
+  }
+
+  async order(id: string, ev: any) {
+      const popover = await this.popoverController.create({
+        component: FazerPedidoComponent,
+        componentProps: {
+          pratoId: id  
+        },
+        event: ev,
+        translucent: true
+      });
+      popover.present();
   }
 
 }

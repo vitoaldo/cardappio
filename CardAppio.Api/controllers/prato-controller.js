@@ -42,6 +42,15 @@ pratoController.prototype.get = async (req, res) => {
 pratoController.prototype.getById = async (req, res) => {
     controllerBase.getById(_repositorio, req, res);
 };
+pratoController.prototype.getByRestauranteId = async (req, res) => {
+    let pratos = await _repositorio.getPratosByRestauranteId(req.params.id);
+    if (pratos) {
+        return res.status(201).send(pratos);
+    }
+    return res.status(500).send({message: 'Erro no processamento do metodo POST'}) 
+
+    controllerBase.getByRestauranteId(_repositorio, req, res);
+};
 pratoController.prototype.delete = async (req, res) => {
     controllerBase.delete(_repositorio, req, res);
 };
