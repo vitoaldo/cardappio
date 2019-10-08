@@ -67,6 +67,7 @@ export class PagarPage implements OnInit {
 
   pagar() {
       this.httpService.pagarPedidos(this.cliente._id).then(pedidos => {
+        this.session.remove('mesa');
         this.navCtrl.navigateForward('/tabs/perfil');
       });
   }

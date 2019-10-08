@@ -17,12 +17,15 @@
       <ion-select-option>5 ou mais</ion-select-option>
     </ion-select>
 
-  <ion-button>
+
     Escolha a data da sua reserva
     <ion-datetime [pickerOptions]="customPickerOptions"
       displayFormat="DD/MM/YY" min="2019" max="2020">
     </ion-datetime>
-  </ion-button>
+
+  <ion-label *ngIf="dataEscolhida">
+    {{dataEscolhida}}
+  </ion-label>
 
   <ion-button (click)="confirmarAgendamento()">
     Confirmar Agendamento

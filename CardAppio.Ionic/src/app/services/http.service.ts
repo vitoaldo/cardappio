@@ -331,12 +331,14 @@ export class HttpService {
 		return promise;
 	}
 
-	postReserva(reserva: any) {
+	postReserva(DataReserva: Date, ClienteId: string, RestauranteId: string, QuantidadePessoas: number) {
 		let promise = new Promise((resolve, reject) => {
 
 			let body = {
-				restauranteId:
-					clienteId: id
+				restauranteId: RestauranteId,
+				clienteId: ClienteId,
+				quantidadePessoas: QuantidadePessoas,
+				dataReserva: DataReserva
 			};
 
 			const headers = new HttpHeaders().set('Content-Type', 'application/json');

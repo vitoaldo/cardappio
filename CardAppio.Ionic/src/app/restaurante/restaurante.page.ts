@@ -87,7 +87,7 @@ export class RestaurantePage implements OnInit {
   reservar_mesa(): void{
     let navigationExtra: NavigationExtras = {
       queryParams: {
-        id: id 
+        restauranteId: this.id
       }
     };
     this.navCtrl.navigateForward('/fazer-reserva', navigationExtra);

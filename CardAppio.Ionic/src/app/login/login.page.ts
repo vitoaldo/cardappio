@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
   }
 
   logar(): void {
+    
     if (this.tipoAcesso === true) {
       this.httpService.verifyCanLogin(this.email, this.password).then(cliente => {
         if (cliente) {
