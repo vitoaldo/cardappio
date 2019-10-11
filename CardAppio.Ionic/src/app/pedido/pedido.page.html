@@ -1,27 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>pedido</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="tabs/pedidos"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Pedido - {{status}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/pedidos"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<ion-card>
-	  <img *ngIf="foto" src="{{foto}}"/>
-	  <ion-card-header>
-	    <ion-card-subtitle>Status: {{status}}</ion-card-subtitle>
-	    <ion-card-title>Prato: {{titulo}}</ion-card-title>
-	  </ion-card-header>
-	  <ion-card-content>
-	    <ion-icon name="text" slot="start"></ion-icon>
-	    {{observacao}}
-	  </ion-card-content>
-	  <ion-item lines="none">
-	  	<ion-button fill="outline" slot="start" (click)="cancelar_pedido(id)" *ngIf="status == 'Em Andamento'">Cancelar pedido</ion-button>
-	  	<ion-button fill="outline" slot="start" (click)="avaliar_pedido(id, $event)" *ngIf="status == 'Concluído'">Avaliar Pedido</ion-button>
-	  	<ion-button fill="outline" slot="start" (click)="refazer_pedido(pratoId, $event)" *ngIf="status == 'Concluído' && mesaExist == true && mesa.restauranteId == restauranteId">Refazer Pedido</ion-button>
-  	  </ion-item>
-	</ion-card>
+    <ion-card>
+        <img *ngIf="foto" src="{{foto}}" class="restaurante-foto" />
+        <div>
+            <ion-card-header>
+                <ion-card-subtitle>Status: {{status}}</ion-card-subtitle>
+                <ion-card-title>Prato: {{titulo}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-icon name="text" slot="start"></ion-icon>
+                {{observacao}}
+            </ion-card-content>
+            <ion-item lines="none">
+                <ion-button fill="outline" slot="start" (click)="cancelar_pedido(id)" *ngIf="status == 'Em Andamento'">Cancelar pedido</ion-button>
+                <ion-button fill="outline" slot="start" (click)="avaliar_pedido(id, $event)" *ngIf="status == 'Concluído'">Avaliar Pedido</ion-button>
+                <ion-button fill="outline" slot="start" (click)="refazer_pedido(pratoId, $event)" *ngIf="status == 'Concluído' && mesaExist == true && mesa.restauranteId == restauranteId">Refazer Pedido</ion-button>
+            </ion-item>
+        </div>
+    </ion-card>
 </ion-content>

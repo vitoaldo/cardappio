@@ -1,0 +1,15 @@
+.btn-cad {
+    --background: #ffffff;
+    --background-activated: #ffffff;
+    --color: #ff423c;
+    --color-activated: #e03a35;
+    display: block;
+}
+
+ion-content,
+ion-header,
+ion-item,
+ion-toolbar {
+    --background: #ff423c;
+    --color: #ffffff;
+}

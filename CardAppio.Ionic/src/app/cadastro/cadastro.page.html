@@ -1,28 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cadastro</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Cadastro</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Nome Completo</ion-label>
-    <ion-input [(ngModel)]="nome" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>E-mail</ion-label>
-    <ion-input [(ngModel)]="email" type="email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input [(ngModel)]="senha" type="password"></ion-input>
-  </ion-item>
-  
+    <ion-item>
+        <ion-label>Nome Completo</ion-label>
+        <ion-input [(ngModel)]="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>E-mail</ion-label>
+        <ion-input [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input [(ngModel)]="senha" type="password"></ion-input>
+    </ion-item>
+
     <ion-img [src]="base64"></ion-img>
-    <ion-button (click)="takePhoto()">Buscar foto de perfil</ion-button>
- 
-  <ion-button (click)="signin()">Cadastrar</ion-button>
+    <ion-button class="btn-cad" (click)="takePhoto()">Buscar foto de perfil</ion-button>
+
+    <ion-button class="btn-cad" (click)="signin()">Cadastrar</ion-button>
 </ion-content>

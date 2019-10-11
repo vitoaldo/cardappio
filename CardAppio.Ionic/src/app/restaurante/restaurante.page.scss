@@ -1,0 +1,55 @@
+.restaurante-foto {
+    width: 33%;
+    min-width: 33%;
+    background-color: #f2f2f2;
+}
+
+.sc-ion-card-ios-h {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+ion-toolbar {
+    --background: #ff423c;
+    --color: #ffffff;
+}
+
+ion-content {
+    --background: #fff9ef;
+}
+
+ion-card {
+    padding: 3% 3.5%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+ion-button {
+    --border-color: #ff423c;
+    --background: transparent;
+    --color: #ff423c;
+    --color-focused: #ff423c;
+}
+
+div {
+    width: 65%;
+}
+
+h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 8.2vw;
+    color: #ff423c;
+    margin: 2vw 0 0 0;
+    margin-top: 1.5vh;
+}
+
+.conteudo-pedir {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

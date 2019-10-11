@@ -1,9 +1,9 @@
 <ion-card class="ion-padding">
-	<ion-card-header>
-	    <ion-card-title>Avaliar</ion-card-title>
-	</ion-card-header>
-	<ion-card-content>
-		<ion-icon name="star" slot="start" *ngFor="let a of selectedStars; index as i" (click)="set_rating(i, true)"></ion-icon>
-		<ion-icon name="star-outline" slot="start" *ngFor="let a of unSelectedStars; index as i" (click)="set_rating(i, false)"></ion-icon>
-	</ion-card-content>
+    <ion-card-header>
+        <ion-card-title>Avaliar</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-icon name="star" slot="start" *ngFor="let a of selectedStars; index as i" (click)="set_rating(i, true)"></ion-icon>
+        <ion-icon name="star-outline" slot="start" *ngFor="let a of unSelectedStars; index as i" (click)="set_rating(i, false)"></ion-icon>
+    </ion-card-content>
 </ion-card>

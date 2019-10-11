@@ -1,8 +1,9 @@
 <ion-header>
-  <ion-back-button> </ion-back-button>
-  <ion-toolbar>
-    <ion-title>Efetue sua reserva</ion-title>
-  </ion-toolbar>
+
+    <ion-toolbar>
+        <ion-back-button> </ion-back-button>
+        <ion-title>Efetue sua reserva</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 
@@ -10,25 +11,24 @@
 <ion-content>
     <ion-label>Quantas pessoas?</ion-label>
     <ion-select cancelText="Cancel" okText="OK">
-      <ion-select-option>1</ion-select-option>
-      <ion-select-option>2</ion-select-option>
-      <ion-select-option>3</ion-select-option>
-      <ion-select-option>4</ion-select-option>
-      <ion-select-option>5 ou mais</ion-select-option>
+        <ion-select-option>1</ion-select-option>
+        <ion-select-option>2</ion-select-option>
+        <ion-select-option>3</ion-select-option>
+        <ion-select-option>4</ion-select-option>
+        <ion-select-option>5 ou mais</ion-select-option>
     </ion-select>
 
 
     Escolha a data da sua reserva
-    <ion-datetime [pickerOptions]="customPickerOptions"
-      displayFormat="DD/MM/YY" min="2019" max="2020">
+    <ion-datetime [pickerOptions]="customPickerOptions" displayFormat="DD/MM/YY" min="2019" max="2020">
     </ion-datetime>
 
-  <ion-label *ngIf="dataEscolhida">
-    {{dataEscolhida}}
-  </ion-label>
+    <ion-label *ngIf="dataEscolhida">
+        {{dataEscolhida}}
+    </ion-label>
 
-  <ion-button (click)="confirmarAgendamento()">
-    Confirmar Agendamento
-  </ion-button>
+    <ion-button (click)="confirmarAgendamento()">
+        Confirmar Agendamento
+    </ion-button>
 
 </ion-content>

@@ -1,12 +1,12 @@
 <ion-item>
-	<ion-label>Mesa:</ion-label>
-	<ion-select [(ngModel)]="mesaEscolhida" okText="Escolher" cancelText="Cancelar">
-		  <ion-select-option *ngFor="let a of mesas; index as i" [value]="i">Número: {{i + 1}}</ion-select-option>
-	</ion-select>
+    <ion-label>Mesa:</ion-label>
+    <ion-select [(ngModel)]="mesaEscolhida" okText="Escolher" cancelText="Cancelar">
+        <ion-select-option *ngFor="let a of mesas; index as i" [value]="i">Número: {{i + 1}}</ion-select-option>
+    </ion-select>
 </ion-item>
 <ion-item>
-	<ion-button fill="outline" expand="block" (click)="reservar()">
-	    	Reservar
-	    	<ion-icon name="arrow-forward" slot="end"></ion-icon>
-	</ion-button>
+    <ion-button fill="outline" expand="block" (click)="reservar()">
+        Reservar
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+    </ion-button>
 </ion-item>

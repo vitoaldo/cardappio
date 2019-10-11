@@ -1,23 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>favoritos</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Favoritos</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<ion-card *ngFor="let rest of restaurantes">
-    	<img *ngIf="rest.foto" src="{{rest.foto}}"/>
-		<ion-card-header>
-			<ion-card-subtitle>Número de mesas: {{rest.quantidadeMesas}}</ion-card-subtitle>
-			<ion-card-title>{{rest.nome}}</ion-card-title>
-		</ion-card-header>
-		<ion-card-content>
-			<ion-icon name="pin" slot="start"></ion-icon>
-			{{rest.local}}
-		</ion-card-content>
-		<ion-item lines="none">
-			<ion-icon name="heart" slot="start" (click)="remove_favorite(rest._id)"></ion-icon>
-			<ion-button fill="outline" slot="end" (click)="view(rest._id)">View</ion-button>
-		</ion-item>
-	</ion-card>
+    <ion-card *ngFor="let rest of restaurantes">
+        <img *ngIf="rest.foto" class="restaurante-foto" src="{{rest.foto}}" />
+        <div>
+            <ion-card-header>
+                <ion-card-subtitle>Número de mesas: {{rest.quantidadeMesas}}</ion-card-subtitle>
+                <ion-card-title>{{rest.nome}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-icon name="pin" slot="start"></ion-icon>
+                {{rest.local}}
+            </ion-card-content>
+            <ion-item lines="none">
+                <ion-icon name="heart" slot="start" (click)="remove_favorite(rest._id)"></ion-icon>
+                <ion-button fill="outline" slot="end" (click)="view(rest._id)">Ver Mais</ion-button>
+            </ion-item>
+        </div>
+    </ion-card>
 </ion-content>

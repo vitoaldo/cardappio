@@ -1,20 +1,19 @@
 <ion-header>
-	<ion-toolbar>
-		<ion-title>perfil</ion-title>
-
-	</ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Perfil</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<ion-img src="{{foto}}"></ion-img>
-	<ion-item>
-		<ion-label>Nome: {{nome}}</ion-label>
-	</ion-item>
-	<ion-item>
-		<ion-label>Email: {{email}}</ion-label>
-	</ion-item>
-	<ion-item>
-		<ion-button (click)="pagar()">Ir para pagamento</ion-button>
-		<ion-button (click)="logout()">Logout</ion-button>
-	</ion-item>
+    <ion-img src="{{foto}}"></ion-img>
+    <ion-item>
+        <ion-label>Nome: {{nome}}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label>Email: {{email}}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-button (click)="pagar()">Ir para pagamento</ion-button>
+        <ion-button (click)="logout()">Logout</ion-button>
+    </ion-item>
 </ion-content>
