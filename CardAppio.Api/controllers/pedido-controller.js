@@ -73,8 +73,21 @@ pedidoController.prototype.getByClienteId = async (req, res) => {
         return res.status(201).send(pedidos);
     }
   
-    return res.status(500).send({message: 'Erro no processamento do metodo GET'}) 
+    return res.status(500).send({message: 'Erro no processamento do metodo GET'});
 };
+
+pedidoController.prototype.getByRestauranteId = async (req, res) => {
+    let data = req.params;
+  
+    let pedidos = await _repositorio.getByRestauranteId(data.id);
+
+    if (pedidos) {
+        return res.status(201).send(pedidos);
+    }
+  
+    return res.status(500).send({message: 'Erro no processamento do metodo GET'});
+};
+
 pedidoController.prototype.delete = async (req, res) => {
     controllerBase.delete(_repositorio, req, res);
 };
