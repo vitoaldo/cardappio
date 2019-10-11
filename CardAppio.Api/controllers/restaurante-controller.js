@@ -9,6 +9,24 @@ function restauranteController(){
 
 }
 
+clienteController.prototype.autenticar = async (req, res) =>{
+    let data = req.body;
+
+    
+    let _validation = new validation();
+
+    _validation.isEmail(data.email, 'O email não é valido');
+    _validation.isRequired(data.email, 'É necessário informar um email');
+    _validation.isRequired(data.senha, 'É necessário informar uma senha');
+
+    let resultado = await _repositorio.authenticate(data.email, data.senha);
+
+    if(resultado){
+        return res.status(200).send(resultado);
+    }
+    return res.status(500).send("Email ou senha incorreta");
+}
+
 restauranteController.prototype.autenticar = async (req, res) => {
     let _validation = new validation();
     _validation.isEmail(req.email, 'O email não é valido');

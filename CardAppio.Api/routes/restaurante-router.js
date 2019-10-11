@@ -14,6 +14,8 @@ router.post('/', ctrl.post);
 
 router.post('/getRestauranteByName', ctrl.getRestauranteByName);
 
+router.post('/auth', ctrl.autenticar);
+
 router.put('/:id', ctrl.put);
 
 router.delete('/:id', ctrl.delete);
