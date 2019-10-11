@@ -9,7 +9,7 @@ function restauranteController(){
 
 }
 
-clienteController.prototype.autenticar = async (req, res) =>{
+restauranteController.prototype.autenticar = async (req, res) =>{
     let data = req.body;
 
     
