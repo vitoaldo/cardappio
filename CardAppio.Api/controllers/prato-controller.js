@@ -18,11 +18,6 @@ pratoController.prototype.post = async (req, res) =>{
     _validation.isRequired(data.tempo, 'O tempo médio é obrigatório');
     _validation.isRequired(data.descricao, 'A descrição do prato é obrigatória');
 
-    let checkPrato = await _repositorio.checkPrato(data.id);
-    if (checkPrato) {
-        _validation.isTrue((checkPrato.id != undefined), `Prato já cadastrado`);
-    }
-    
     controllerBase.post(_repositorio, _validation, req, res);
 };
 pratoController.prototype.put = async (req, res) =>{

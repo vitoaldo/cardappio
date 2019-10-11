@@ -11,7 +11,6 @@ function restauranteController(){
 
 restauranteController.prototype.autenticar = async (req, res) =>{
     let data = req.body;
-
     
     let _validation = new validation();
 
@@ -25,20 +24,6 @@ restauranteController.prototype.autenticar = async (req, res) =>{
         return res.status(200).send(resultado);
     }
     return res.status(500).send("Email ou senha incorreta");
-}
-
-restauranteController.prototype.autenticar = async (req, res) => {
-    let _validation = new validation();
-    _validation.isEmail(req.email, 'O email não é valido');
-    _validation.isRequired(req.email, 'É necessário informar um email');
-    _validation.isRequired(req.senha, 'É necessário informar uma senha');
-
-    let resultado = _repositorio.authenticate(req.email, req.senha);
-
-    if(resultado){
-        return res.status(200).send(resultado);
-    }
-    return null;
 }
 
 restauranteController.prototype.post = async (req, res) =>{
