@@ -12,6 +12,8 @@ router.get('/:id', ctrl.getById);
 
 router.get('/byCliente/:id', ctrl.getByClienteId);
 
+router.get('/restaurante/:id', ctrl.getByRestauranteId);
+
 router.post('/', ctrl.post);
 
 router.post('/changeStatus/', ctrl.changeStatus);
